@@ -1,0 +1,434 @@
+/* تحديد الخط الأساسي واتجاه الكتابة */
+body {
+    font-family: 'Cairo', sans-serif;
+    direction: rtl; /* اتجاه الكتابة من اليمين لليسار (RTL) */
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6; /* خلفية فاتحة للموقع */
+    color: #333;
+}
+
+/* المتغيرات الأساسية للألوان */
+:root {
+    --primary-color: #1A237E; /* الأزرق الغامق الجديد */
+    --secondary-color: #f8f8f8; /* لون ثانوي فاتح */
+    --text-color: #333;
+    --white-color: #ffffff;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* الأزرار والتعديل على اللون */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s, transform 0.2s;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color); /* تطبيق اللون الأزرق الغامق */
+    color: var(--white-color);
+}
+
+.btn-primary:hover {
+    background-color: #111A5B; /* درجة أغمق عند المرور */
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+/* الهيدر وشريط التنقل */
+.header {
+    background-color: var(--white-color);
+    box-shadow: var(--shadow-light);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 10px 15px;
+    display: block;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav ul li a:hover {
+    color: var(--primary-color); /* تطبيق اللون الأزرق الغامق */
+}
+
+.menu-icon {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+/* قسم الترحيب (Hero) */
+.hero {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 80px 0;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero-buttons a {
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.hero-buttons .btn-secondary {
+    background-color: var(--white-color);
+}
+
+.image-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* الأقسام العامة */
+section {
+    padding: 60px 0;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-color); /* تطبيق اللون الأزرق الغامق */
+    margin-bottom: 40px;
+    position: relative;
+}
+
+section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* بطاقات الخدمات (Service Card) */
+.service-card {
+    background-color: var(--white-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    border-radius: 50%;
+}
+
+.service-card h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    display: block;
+    margin-top: 15px;
+}
+
+/* قسم المميزات (Features) */
+.features .feature-card {
+    background-color: var(--white-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    text-align: center;
+}
+
+.features .feature-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* قسم طرق الدفع (Payments) */
+.payments {
+    background-color: var(--secondary-color);
+}
+
+.payment-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.payment-logos img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 5px;
+    background-color: var(--white-color);
+    padding: 5px 10px;
+    box-shadow: var(--shadow-light);
+}
+
+/* قسم آراء العملاء (Reviews) */
+.reviews {
+    background-color: var(--white-color);
+}
+
+.review-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 20px;
+    justify-content: center;
+}
+
+.review-card {
+    min-width: 300px;
+    max-width: 350px;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+}
+
+.review-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.review-card .quote {
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.review-card .rating {
+    color: gold;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.review-card .client-name {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* قسم الاتصال (Contact) */
+.contact {
+    text-align: center;
+    background-color: #f4f7f6;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: right;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form .btn-primary {
+    align-self: center;
+    width: auto;
+}
+
+/* التذييل (Footer) */
+.footer {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 25px 0;
+    text-align: center;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-links a {
+    color: var(--white-color);
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #a8b0e8; /* لون فاتح عند المرور */
+}
+
+/* التجاوب مع الشاشات الصغيرة (Media Queries) */
+@media (max-width: 992px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content .text-content {
+        order: 2;
+    }
+
+    .hero-content .image-content {
+        order: 1;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header .nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        left: 0;
+        background-color: var(--white-color);
+        box-shadow: var(--shadow-light);
+        padding: 10px 0;
+        z-index: 999;
+    }
+
+    .header .nav.active {
+        display: flex;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav ul li a {
+        color: var(--text-color);
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .footer .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .footer p {
+        margin: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-buttons a {
+        margin-left: 0;
+        width: 100%;
+    }
+}
