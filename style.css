@@ -191,7 +191,7 @@ section h2::after {
 
 /* بطاقات الخدمات (Service Card) */
 .service-card {
-    background-color: var(--ashen-color);
+    background-color: var(--white-color);
     padding: 30px;
     border-radius: 10px;
     box-shadow: var(--shadow-light);
