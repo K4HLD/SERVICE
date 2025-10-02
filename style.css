@@ -7,7 +7,20 @@ body {
     padding: 0;
     background-color: #f4f7f6; /* خلفية فاتحة للموقع */
     color: #333;
+    /* ================================================= */
+    /* التعديل الرئيسي لحل مشكلة الجانب الأبيض */
+    overflow-x: hidden; 
+    /* ================================================= */
 }
+
+/* ================================================= */
+/* القاعدة العامة لضمان عدم تجاوز العرض */
+/* ================================================= */
+* {
+    /* يضمن أن يتم حساب الحدود (padding و border) ضمن العرض الإجمالي */
+    box-sizing: border-box; 
+}
+/* ================================================= */
 
 /* المتغيرات الأساسية للألوان */
 :root {
@@ -255,17 +268,32 @@ section h2::after {
     background-color: var(--white-color);
 }
 
+/* ================================================= */
+/* تعديل مهم: تم تغيير خصائص .review-carousel هنا لتناسب الهاتف */
 .review-carousel {
     display: flex;
-    overflow-x: auto;
     gap: 20px;
     padding-bottom: 20px;
-    justify-content: center;
+    /* إزالة خاصية justify-content: center; هنا لتفعيل التمرير الأفقي بشكل صحيح */
+    
+    /* خصائص التمرير الأفقي */
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch; /* لتحسين التمرير على iOS */
+    /* إخفاء شريط التمرير الافتراضي في بعض المتصفحات */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
 }
+.review-carousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+/* ================================================= */
 
 .review-card {
-    min-width: 300px;
+    /* تم تغيير min-width لضمان عدم تجاوز العرض وإتاحة مساحة أكبر للتمرير على الهاتف */
+    min-width: 85vw; /* تأخذ 85% من عرض الشاشة (viewport width) */
     max-width: 350px;
+    flex-shrink: 0; /* تضمن عدم انكماش البطاقة */
+    /* ---------------------------------------------------------------------- */
     padding: 25px;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -412,7 +440,9 @@ section h2::after {
         display: block;
     }
 
+    /* ---------------------------------------------------- */
     /* *** الإضافة/التعديل لضمان عدم التبعثر على الهاتف *** */
+    /* ---------------------------------------------------- */
 
     /* 1. قسم الترحيب (Hero) - ضمان الترتيب العمودي وتوسيط الأزرار */
     .hero-content {
@@ -427,13 +457,7 @@ section h2::after {
         flex-wrap: wrap; /* تسمح للأزرار بالنزول لسطر جديد إذا لم تتسع */
     }
     
-    /* 2. قسم آراء العملاء (Reviews) - ضمان التمرير الأفقي بشكل صحيح */
-    .review-carousel {
-        justify-content: flex-start;
-        padding-right: 15px;
-    }
-
-    /* 3. التذييل (Footer) - ترتيب عمودي */
+    /* 2. التذييل (Footer) - ترتيب عمودي */
     .footer .container {
         flex-direction: column;
         gap: 15px;
@@ -443,10 +467,9 @@ section h2::after {
         margin: 0;
     }
     
-    /* 4. القاعدة العامة للصور */
-    img {
-        max-width: 100%;
-        height: auto;
+    /* 3. تحويل شبكات البطاقات (الخدمات والمميزات) إلى عرض عمودي */
+    .cards-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -466,4 +489,3 @@ section h2::after {
         width: 100%;
     }
     }
-        
