@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K4HLD Store - شحن جواهر Free Fire</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght=400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: #808080;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+        .product-card .price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1A237E; /* اللون الأزرق الغامق */
+            margin: 15px 0 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">K4HLD Store.</a>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html#services">خدماتنا</a></li>
+                    <li><a href="index.html#why-us">لماذا نحن</a></li>
+                    <li><a href="index.html#reviews">آراء العملاء</a></li>
+                    <li><a href="index.html#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            <div class="menu-icon"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section class="products-section" style="padding: 60px 0;">
+        <div class="container">
+            <h2 style="text-align: center; color: #1A237E;">باقات شحن Free Fire</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 40px;">اختر الباقة المناسبة لك وسيتم تحويلك إلى واتساب لإتمام الطلب.</p>
+            
+            <div id="product-list" class="cards-grid">
+                
+                <div class="product-card" data-package="1000 جوهرة" data-price="100">
+                    <img src="https://i.ibb.co/S4xQwdtg/67d3f3c25e3caa15d42569bd-D8-L6-Ty-RK03.webp" alt="Free Fire Diamonds">
+                    <h3>1000 جوهرة (Diamonds)</h3>
+                    <p class="price">السعر: 100 درهم (DH)</p>
+                    <button class="btn btn-primary buy-btn" data-product-name="1000 جوهرة">اطلب الآن</button>
+                </div>
+                
+                <div class="product-card" data-package="5600 جوهرة" data-price="480">
+                    <img src="https://i.ibb.co/S4xQwdtg/67d3f3c25e3caa15d42569bd-D8-L6-Ty-RK03.webp" alt="Free Fire Diamonds">
+                    <h3>5600 جوهرة (Diamonds)</h3>
+                    <p class="price">السعر: 480 درهم (DH)</p>
+                    <button class="btn btn-primary buy-btn" data-product-name="5600 جوهرة">اطلب الآن</button>
+                </div>
+                
+                <div class="product-card" data-package="عضوية أسبوعية" data-price="30">
+                    <img src="https://i.ibb.co/9cd2s0c/Membership.png" alt="Weekly Membership">
+                    <h3>عضوية أسبوعية (Weekly Membership)</h3>
+                    <p class="price">السعر: 30 درهم (DH)</p>
+                    <button class="btn btn-primary buy-btn" data-product-name="عضوية أسبوعية">اطلب الآن</button>
+                </div>
+                
+                </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 K4HLD Store. جميع الحقوق محفوظة.</p>
+            <div class="social-links">
+                <a href="https://wa.me/212770306095" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buyButtons = document.querySelectorAll('.buy-btn');
+            const whatsappNumber = '212770306095';
+
+            buyButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    // الحصول على بيانات المنتج من البطاقة الأم
+                    const card = event.target.closest('.product-card');
+                    const productName = card.getAttribute('data-package');
+                    const productPrice = card.getAttribute('data-price');
+                    
+                    // إنشاء محتوى الرسالة
+                    const message = `مرحباً، أود طلب الخدمة التالية من متجركم:\n\n*المنتج:* ${productName}\n*السعر:* ${productPrice} درهم مغربي (DH)\n\nالرجاء إخباري بخطوات الدفع لإتمام الطلب. شكراً.`;
+                    
+                    // ترميز الرسالة لرابط URL
+                    const encodedMessage = encodeURIComponent(message);
+                    
+                    // بناء رابط واتساب النهائي
+                    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                    
+                    // فتح الرابط (سيفتح تطبيق الواتساب مباشرة مع الرسالة المعبأة)
+                    window.open(whatsappURL, '_blank');
+                });
+            });
+
+            // تبديل قائمة التنقل للجوال (لضمان عمل الزر على الموبايل)
+            document.querySelector('.menu-icon').addEventListener('click', () => {
+                document.querySelector('.nav').classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
