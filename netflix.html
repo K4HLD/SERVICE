@@ -1,54 +1,168 @@
-<section id="products" class="services">
-    <div class="container">
-        <h2>اشتراكات نتفلكس (Netflix)</h2>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اشتراكات نتفلكس - K4HLD Store Style</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <style>
+        /* الألوان الأساسية المستخدمة */
+        :root {
+            --primary-color: #e50914; /* يمكنك تغيير هذا للون مميز لديك */
+            --text-color: #333;
+            --background-color: #f4f4f4;
+            --card-bg: #fff;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* تنسيق الحاوية الرئيسية (Cards Grid) */
+        .cards-grid {
+            display: grid;
+            /* عرض 3 أعمدة في الأجهزة الكبيرة */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* تنسيق البطاقة الفردية (Service Card) */
+        .service-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center; /* محاذاة كل المحتوى للوسط */
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eee; /* إضافة خط خفيف */
+        }
+
+        /* تأثير تحوم الماوس على البطاقة */
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* تنسيق الأيقونات */
+        .icon-style {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* تنسيق العناوين داخل البطاقة */
+        .service-card h3 {
+            font-size: 1.6rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        /* تنسيق السعر */
+        .price-text {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-color); /* لون مميز للسعر */
+            margin: 20px 0;
+        }
+
+        /* تنسيق الأزرار (اطلب الآن) */
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff !important;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+            width: 100%; /* جعل الزر بعرض البطاقة بالكامل */
+        }
+
+        .btn-primary:hover {
+            background-color: #b2070f; /* لون أغمق عند التحويم */
+        }
         
-        <div class="cards-grid">
+        /* تنسيقات أساسية للجسم واللغة العربية */
+        body {
+            font-family: 'Arial', sans-serif; /* يفضل استخدام خط يدعم العربية بشكل أفضل */
+            background-color: var(--background-color);
+            padding: 40px 20px;
+            direction: rtl; /* اتجاه النص من اليمين لليسار */
+            text-align: right;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
 
-            <div class="service-card">
-                <i class="fas fa-tv" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px;"></i>
-                
-                <h3>اشتراك شهري</h3>
-                <p>استمتع بكافة الأفلام والمسلسلات بجودة عالية لمدة شهر كامل.</p>
-                
-                <p style="font-size: 1.8rem; font-weight: 700; color: var(--text-color); margin: 15px 0;">
-                    40 درهم
-                </p>
-                
-                <a href="#contact" class="btn btn-primary card-link" style="width: auto;">
-                    اطلب الآن
-                </a>
-            </div>
-
-            <div class="service-card">
-                <i class="fas fa-ticket-alt" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px;"></i>
-
-                <h3>اشتراك 3 أشهر (خصم!)</h3>
-                <p>وفر 20 درهم عند الاشتراك لثلاثة أشهر متتالية. أفضل قيمة.</p>
-                
-                <p style="font-size: 1.8rem; font-weight: 700; color: var(--text-color); margin: 15px 0;">
-                    100 درهم
-                </p>
-                
-                <a href="#contact" class="btn btn-primary card-link" style="width: auto;">
-                    اطلب الآن
-                </a>
-            </div>
-
-            <div class="service-card">
-                <i class="fas fa-star" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px;"></i>
-
-                <h3>اشتراك 6 أشهر (المميز)</h3>
-                <p>أقل سعر شهري! وفّر واشترك في الخدمة المميزة لمدة نصف عام.</p>
-                
-                <p style="font-size: 1.8rem; font-weight: 700; color: var(--text-color); margin: 15px 0;">
-                    180 درهم
-                </p>
-                
-                <a href="#contact" class="btn btn-primary card-link" style="width: auto;">
-                    اطلب الآن
-                </a>
-            </div>
+    <section id="products" class="services">
+        <div class="container">
+            <h2>اشتراكات نتفلكس (Netflix)</h2>
             
+            <div class="cards-grid">
+
+                <div class="service-card">
+                    <i class="fas fa-tv icon-style"></i> 
+                    
+                    <h3>اشتراك شهري</h3>
+                    <p>استمتع بكافة الأفلام والمسلسلات بجودة عالية لمدة شهر كامل.</p>
+                    
+                    <p class="price-text">
+                        40 درهم
+                    </p>
+                    
+                    <a href="#contact" class="btn btn-primary card-link">
+                        اطلب الآن
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-ticket-alt icon-style"></i>
+
+                    <h3>اشتراك 3 أشهر (خصم!)</h3>
+                    <p>وفر 20 درهم عند الاشتراك لثلاثة أشهر متتالية. أفضل قيمة.</p>
+                    
+                    <p class="price-text">
+                        100 درهم
+                    </p>
+                    
+                    <a href="#contact" class="btn btn-primary card-link">
+                        اطلب الآن
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-star icon-style"></i>
+
+                    <h3>اشتراك 6 أشهر (المميز)</h3>
+                    <p>أقل سعر شهري! وفّر واشترك في الخدمة المميزة لمدة نصف عام.</p>
+                    
+                    <p class="price-text">
+                        180 درهم
+                    </p>
+                    
+                    <a href="#contact" class="btn btn-primary card-link">
+                        اطلب الآن
+                    </a>
+                </div>
+                
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+</body>
+</html>
