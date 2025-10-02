@@ -141,5 +141,28 @@
             document.querySelector('.nav').classList.toggle('active');
         });
     </script>
+<div id="welcomePopup" style="display: none;">
+    <div class="popup-content">
+        <h2>⚠️ إشعار هام</h2>
+        <p>
+            **الموقع حالياً قيد التجربة والتطوير، شكراً على تفهمكم.**
+        </p>
+        <button onclick="closePopup()">إغلاق ومتابعة التصفح</button>
+    </div>
+</div>
+<script>
+    // هذه الدالة تظهر النافذة عند تحميل الصفحة
+    window.onload = function() {
+        document.getElementById('welcomePopup').style.display = 'flex';
+    };
+
+    // هذه الدالة تخفي النافذة عند الضغط على زر الإغلاق
+    function closePopup() {
+        document.getElementById('welcomePopup').style.display = 'none';
+    }
+</script>
+</body>
+</html>
+
 </body>
 </html>
