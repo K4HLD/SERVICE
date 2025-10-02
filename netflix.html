@@ -10,17 +10,40 @@
     <style>
         /* الألوان الأساسية المستخدمة */
         :root {
-            --primary-color: #e50914; /* يمكنك تغيير هذا للون مميز لديك */
-            --text-color: #333;
-            --background-color: #f4f4f4;
-            --card-bg: #fff;
-            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --primary-color: #e50914; /* لون نتفلكس الأحمر */
+            --text-color: #000000; /* تغيير لون النص الأساسي للأسود (ليظهر على الخلفية البيضاء للبطاقة) */
+            --background-color: #000000; /* تغيير لون الخلفية للأسود */
+            --card-bg: #FFFFFF; /* تغيير خلفية البطاقة للأبيض */
+            --card-shadow: 0 4px 12px rgba(255, 255, 255, 0.1); /* ظل خفيف باللون الأبيض ليظهر على الخلفية السوداء */
         }
 
+        /* تنسيقات أساسية للجسم واللغة العربية */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-color); /* تطبيق الخلفية السوداء */
+            padding: 40px 20px;
+            direction: rtl; 
+            text-align: right;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        /* لتظهر النصوص العادية على الخلفية السوداء */
+        p {
+            color: #ccc; 
+            line-height: 1.6;
+        }
+        
         /* تنسيق الحاوية الرئيسية (Cards Grid) */
         .cards-grid {
             display: grid;
-            /* عرض 3 أعمدة في الأجهزة الكبيرة */
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 30px;
             margin-top: 40px;
@@ -28,19 +51,21 @@
 
         /* تنسيق البطاقة الفردية (Service Card) */
         .service-card {
-            background: var(--card-bg);
+            background: var(--card-bg); /* تطبيق الخلفية البيضاء للبطاقة */
+            color: var(--text-color); /* ضمان أن يكون نص البطاقة أسود */
             padding: 30px;
             border-radius: 10px;
-            text-align: center; /* محاذاة كل المحتوى للوسط */
+            text-align: center; 
             box-shadow: var(--card-shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #eee; /* إضافة خط خفيف */
+            border: 1px solid #333; /* إضافة خط داكن ليظهر على الخلفية السوداء */
         }
 
         /* تأثير تحوم الماوس على البطاقة */
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            /* ظل أكثر وضوحاً عند التحويم */
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3); 
         }
 
         /* تنسيق الأيقونات */
@@ -61,8 +86,13 @@
         .price-text {
             font-size: 2.2rem;
             font-weight: 800;
-            color: var(--primary-color); /* لون مميز للسعر */
+            color: var(--primary-color);
             margin: 20px 0;
+        }
+        
+        /* تنسيق وصف الخدمة داخل البطاقة */
+        .service-card p {
+            color: #666; /* لون رمادي للنص داخل البطاقة البيضاء */
         }
 
         /* تنسيق الأزرار (اطلب الآن) */
@@ -76,35 +106,13 @@
             font-weight: 700;
             margin-top: 10px;
             transition: background-color 0.3s ease;
-            width: 100%; /* جعل الزر بعرض البطاقة بالكامل */
+            width: 100%; 
         }
 
         .btn-primary:hover {
-            background-color: #b2070f; /* لون أغمق عند التحويم */
+            background-color: #b2070f;
         }
         
-        /* تنسيقات أساسية للجسم واللغة العربية */
-        body {
-            font-family: 'Arial', sans-serif; /* يفضل استخدام خط يدعم العربية بشكل أفضل */
-            background-color: var(--background-color);
-            padding: 40px 20px;
-            direction: rtl; /* اتجاه النص من اليمين لليسار */
-            text-align: right;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        h2 {
-            text-align: center;
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-        }
-        p {
-            color: #666;
-            line-height: 1.6;
-        }
     </style>
 </head>
 <body>
@@ -125,7 +133,10 @@
                         40 درهم
                     </p>
                     
-                    <a href="#contact" class="btn btn-primary card-link">
+                    <a 
+                        href="https://wa.me/212770306095?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%86%D8%AA%D9%81%D9%84%D9%83%D8%B3%20%D8%B4%D9%87%D8%B1%D9%8A%20-%2040%20%D8%AF%D8%B1%D9%87%D9%85" 
+                        target="_blank" 
+                        class="btn btn-primary card-link">
                         اطلب الآن
                     </a>
                 </div>
@@ -140,7 +151,10 @@
                         100 درهم
                     </p>
                     
-                    <a href="#contact" class="btn btn-primary card-link">
+                    <a 
+                        href="https://wa.me/212770306095?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%86%D8%AA%D9%81%D9%84%D9%83%D8%B3%20%D9%84%D9%80%203%20%D8%A3%D8%B4%D9%87%D8%B1%20-%20100%20%D8%AF%D8%B1%D9%87%D9%85" 
+                        target="_blank" 
+                        class="btn btn-primary card-link">
                         اطلب الآن
                     </a>
                 </div>
@@ -155,7 +169,10 @@
                         180 درهم
                     </p>
                     
-                    <a href="#contact" class="btn btn-primary card-link">
+                    <a 
+                        href="https://wa.me/212770306095?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%86%D8%AA%D9%81%D9%84%D9%83%D8%B3%20%D9%84%D9%80%206%20%D8%A3%D8%B4%D9%87%D8%B1%20-%20180%20%D8%AF%D8%B1%D9%87%D9%85" 
+                        target="_blank" 
+                        class="btn btn-primary card-link">
                         اطلب الآن
                     </a>
                 </div>
