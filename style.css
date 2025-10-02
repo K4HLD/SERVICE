@@ -569,3 +569,10 @@ section h2::after {
 .whatsapp-float:hover {
     background-color: #128C7E;
 }
+/* يستهدف عنوان H2 داخل قسم المميزات (#why-us أو .features) */
+.features h2 {
+    color: #3498db; /* لون أزرق فاتح وواضح */
+    font-weight: 700; /* لجعل الخط سميكًا وبارزًا */
+    /* يمكنك إضافة المزيد من الوضوح بزيادة الحجم قليلاً */
+    /* font-size: 2.2rem; */
+}
