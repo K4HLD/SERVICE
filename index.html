@@ -150,19 +150,24 @@
         <button onclick="closePopup()">إغلاق ومتابعة التصفح</button>
     </div>
 </div>
-<script>
-    // هذه الدالة تظهر النافذة عند تحميل الصفحة
-    window.onload = function() {
-        document.getElementById('welcomePopup').style.display = 'flex';
-    };
-
-    // هذه الدالة تخفي النافذة عند الضغط على زر الإغلاق
-    function closePopup() {
-        document.getElementById('welcomePopup').style.display = 'none';
+<<script>
+    // هذه الدالة تُظهر النافذة المنبثقة
+    function showModal() {
+        document.getElementById('importantNotificationModal').classList.add('active');
     }
+
+    // هذه الدالة تُخفي النافذة المنبثقة
+    function closeModal() {
+        document.getElementById('importantNotificationModal').classList.remove('active');
+        // إذا أردت أن تظهر النافذة مرة واحدة فقط، يمكنك إضافة كود هنا لحفظ حالة الإغلاق في LocalStorage
+    }
+
+    // تشغيل الدالة عند تحميل الصفحة لإظهار النافذة
+    window.onload = function() {
+        showModal();
+    };
 </script>
-</body>
-</html>
+
 
 </body>
 </html>
