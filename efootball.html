@@ -31,12 +31,23 @@
             object-fit: contain;
             margin-bottom: 20px;
         }
-        .product-card .price {
-            font-size: 1.6rem;
+
+        /* تعديل حجم الخط للعملات - أصبح الآن أكبر */
+        .product-card h3 {
+            font-size: 1.8rem; 
             font-weight: 700;
-            color: #1A237E; /* اللون الأزرق الغامق */
-            margin: 20px auto 15px auto; /* تعديل الهامش */
+            color: #1A237E;
+            margin-bottom: 10px;
         }
+
+        /* تعديل حجم الخط للسعر - أصبح الآن أصغر */
+        .product-card .price {
+            font-size: 1.3rem; /* الحجم الجديد الأصغر */
+            font-weight: 700;
+            color: #555; /* لون مختلف لتمييزه */
+            margin: 20px auto 15px auto;
+        }
+
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
