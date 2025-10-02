@@ -358,8 +358,12 @@ section h2::after {
     color: #a8b0e8; /* لون فاتح عند المرور */
 }
 
+/* ========================================================= */
 /* التجاوب مع الشاشات الصغيرة (Media Queries) */
+/* ========================================================= */
+
 @media (max-width: 992px) {
+    /* تغيير الترتيب العمودي لقسم Hero على الأجهزة اللوحية */
     .hero-content {
         flex-direction: column;
         text-align: center;
@@ -376,6 +380,8 @@ section h2::after {
 }
 
 @media (max-width: 768px) {
+    /* ---------------------------------------------------- */
+    /* تعديلات الهيدر وشريط التنقل (تم الإبقاء على الكود الأصلي لـ GitHub) */
     .header .nav {
         display: none;
         flex-direction: column;
@@ -406,6 +412,28 @@ section h2::after {
         display: block;
     }
 
+    /* *** الإضافة/التعديل لضمان عدم التبعثر على الهاتف *** */
+
+    /* 1. قسم الترحيب (Hero) - ضمان الترتيب العمودي وتوسيط الأزرار */
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        display: flex; 
+        flex-wrap: wrap; /* تسمح للأزرار بالنزول لسطر جديد إذا لم تتسع */
+    }
+    
+    /* 2. قسم آراء العملاء (Reviews) - ضمان التمرير الأفقي بشكل صحيح */
+    .review-carousel {
+        justify-content: flex-start;
+        padding-right: 15px;
+    }
+
+    /* 3. التذييل (Footer) - ترتيب عمودي */
     .footer .container {
         flex-direction: column;
         gap: 15px;
@@ -413,6 +441,12 @@ section h2::after {
 
     .footer p {
         margin: 0;
+    }
+    
+    /* 4. القاعدة العامة للصور */
+    img {
+        max-width: 100%;
+        height: auto;
     }
 }
 
@@ -431,4 +465,5 @@ section h2::after {
         margin-left: 0;
         width: 100%;
     }
-}
+    }
+        
