@@ -540,3 +540,32 @@ section h2::after {
     to { opacity: 1; transform: scale(1); }
 }
 
+.whatsapp-float {
+    /* تحديد موقعه ليكون ثابتاً على الشاشة */
+    position: fixed; 
+    /* وضعه في الأسفل واليسار (أو اليمين حسب لغة موقعك) */
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    left: 40px; /* إذا كان الموقع من اليمين لليسار (RTL) مثل العربية، قد تفضّل left */
+    
+    /* تصميم الزر */
+    background-color: #25d366; /* لون واتساب الأخضر */
+    color: #FFF;
+    border-radius: 50px; /* لجعله دائريًا */
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999; /* لإضافة ظل لطيف */
+    z-index: 1000; /* للتأكد من أنه يظهر فوق جميع العناصر الأخرى */
+
+    /* توسيط النص/الأيقونة */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none; /* إزالة خطوط الروابط */
+}
+
+/* إضافة تأثير عند مرور الماوس (اختياري) */
+.whatsapp-float:hover {
+    background-color: #128C7E;
+}
