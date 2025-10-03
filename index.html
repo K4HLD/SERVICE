@@ -212,7 +212,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 
     <script>
-        // 2. تهيئة Firebase - (تم لصق القيم الخاصة بك هنا)
+        // قيم التهيئة
         const firebaseConfig = {
             apiKey: "AIzaSyCg4Pg1oGAZNIvIH-M79bY5aPOn2IRnxtg", 
             authDomain: "service-store-auth.firebaseapp.com",
@@ -222,7 +222,7 @@
             appId: "1:727304309601:web:7ededd4f42d39f61b9d320"
         };
 
-        // تهيئة التطبيق والخدمات
+        // تهيئة التطبيق والخدمات (متغيرات عامة الآن)
         const app = firebase.initializeApp(firebaseConfig);
         const auth = app.auth();
         const db = app.firestore();
