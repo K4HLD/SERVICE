@@ -86,9 +86,10 @@ a {
 }
 
 .menu-icon {
-    display: none; /* إخفاء في الشاشات الكبيرة */
+    display: none; /* إخفاء افتراضي في الشاشات الكبيرة */
     font-size: 1.5rem;
     cursor: pointer;
+    color: white;
 }
 
 /* --------------------------------------
@@ -242,7 +243,12 @@ a {
    -------------------------------------- */
 @media (max-width: 768px) {
     
-    /* القائمة المتجاوبة */
+    /* ***** الإصلاح: إظهار أيقونة القائمة على الجوال ***** */
+    .menu-icon {
+        display: block; 
+    }
+    
+    /* القائمة المتجاوبة نفسها */
     .nav {
         display: none;
         flex-direction: column;
@@ -255,7 +261,7 @@ a {
     }
 
     .nav.active {
-        display: flex;
+        display: flex; /* تظهر القائمة عند النقر */
     }
 
     .nav ul {
@@ -274,9 +280,6 @@ a {
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .menu-icon {
-        display: block; /* إظهار أيقونة القائمة */
-    }
     
     /* تعديل تنسيق التذييل في الجوال */
     .footer .container {
