@@ -1,118 +1,60 @@
-/* ========================================================= */
-/* 1. القواعد العامة والمتغيرات الأساسية (Globals & Variables) */
-/* ========================================================= */
-
-/* المتغيرات الأساسية للألوان */
+/* --------------------------------------
+   1. المتغيرات الأساسية (يمكن تغييرها لجميع الموقع)
+   -------------------------------------- */
 :root {
-    --primary-color: #1A237E; /* الأزرق الغامق (الرئيسي) */
-    --secondary-color: #f8f8f8; /* لون ثانوي فاتح للخلفيات */
-    --text-color: #333; /* لون النص الأساسي */
-    --white-color: #ffffff;
-    --black-color: #000000;
-    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
-    --link-hover-color: #536DFE; /* لون فاتح للتأثير */
+    --header-bg: #1A237E; /* الأزرق الداكن للترويسة */
+    --footer-bg: #1A237E;
+    --text-color: #333; /* لون النص الرئيسي */
+    --background-page: #f4f7fa; /* لون الخلفية الرئيسي للموقع */
+    --link-color: #3498db; 
+    --card-bg-color: #FFFFFF;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    
+    /* المتغيرات الخاصة بالمنتج (يتم تجاوزها في الصفحات الفردية) */
+    --product-primary-color: var(--link-color); 
+    --buy-button-color: #4CAF50; /* لون زر الواتساب الافتراضي */
 }
 
-/* القاعدة العامة لضمان عدم تجاوز العرض وتصحيح الصندوق */
+/* --------------------------------------
+   2. إعادة تعيين الأنماط والخطوط
+   -------------------------------------- */
 * {
-    box-sizing: border-box; 
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* تحديد الخط الأساسي واتجاه الكتابة وتصحيح العرض */
 body {
     font-family: 'Cairo', sans-serif;
+    background-color: var(--background-page);
+    color: var(--text-color);
     direction: rtl; 
     text-align: right;
-    background-color: var(--white-color); /* تغيير الخلفية للابيض ليتناسق مع الهيدر */
-    color: var(--text-color);
-    overflow-x: hidden; /* يحل مشكلة ظهور الجانب الأبيض عند التمرير الأفقي */
+    line-height: 1.6;
 }
 
 .container {
+    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 15px;
-    width: 100%;
 }
 
-/* الأقسام العامة */
-section {
-    padding: 60px 0;
-}
-
-section h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 40px;
-    position: relative;
-    font-weight: 700;
-}
-
-section h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px;
-    background-color: var(--primary-color);
-    margin: 10px auto 0;
-    border-radius: 2px;
-}
-
-/* --------------------------------------------------------- */
-
-/* ========================================================= */
-/* 2. الأزرار (Buttons) */
-/* ========================================================= */
-
-.btn {
-    display: inline-block;
-    padding: 12px 25px;
-    border-radius: 8px;
+a {
     text-decoration: none;
-    font-weight: 700;
-    transition: background-color 0.3s, transform 0.2s;
-    border: none;
-    cursor: pointer;
-    text-align: center;
+    color: var(--link-color);
 }
 
-.btn-primary {
-    background-color: var(--primary-color);
-    color: var(--white-color) !important; /* ضمان اللون الأبيض للنص */
-}
-
-.btn-primary:hover {
-    background-color: #111A5B; 
-    transform: translateY(-2px);
-}
-
-.btn-secondary {
-    background-color: var(--white-color);
-    color: var(--primary-color) !important;
-    border: 1px solid var(--primary-color);
-}
-
-.btn-secondary:hover {
-    background-color: var(--secondary-color);
-    transform: translateY(-2px);
-}
-
-/* --------------------------------------------------------- */
-
-/* ========================================================= */
-/* 3. الهيدر وشريط التنقل (Header & Navigation) */
-/* ========================================================= */
-
+/* --------------------------------------
+   3. تنسيق الترويسة (Header) والقائمة المتجاوبة
+   -------------------------------------- */
 .header {
-    background-color: var(--white-color);
-    box-shadow: var(--shadow-light);
+    background-color: var(--header-bg);
+    color: white;
     padding: 15px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .header .container {
@@ -122,459 +64,235 @@ section h2::after {
 }
 
 .logo {
+    color: white;
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--primary-color);
-    text-decoration: none;
 }
 
 .nav ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
 }
 
 .nav ul li a {
-    text-decoration: none;
-    color: var(--text-color);
-    padding: 10px 15px;
-    display: block;
-    font-weight: 500;
+    color: white;
+    padding: 0 15px;
     transition: color 0.3s;
+    font-weight: 500;
 }
 
 .nav ul li a:hover {
-    color: var(--primary-color);
+    color: #FFEB3B; /* لون أصفر للتأثير */
 }
 
 .menu-icon {
-    display: none; /* يتم إظهاره فقط في وضع الجوال */
+    display: none; /* إخفاء في الشاشات الكبيرة */
     font-size: 1.5rem;
     cursor: pointer;
-    color: var(--primary-color);
 }
 
-/* --------------------------------------------------------- */
-
-/* ========================================================= */
-/* 4. قسم الترحيب (Hero Section) */
-/* ========================================================= */
-
-.hero {
-    background-color: var(--primary-color);
-    color: var(--white-color);
+/* --------------------------------------
+   4. تنسيق قسم المنتجات والبطاقات
+   -------------------------------------- */
+.products-section {
     padding: 80px 0;
 }
 
-.hero-content {
-    display: flex;
-    align-items: center;
-    gap: 40px;
+.products-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--header-bg); /* لون العنوان الافتراضي */
 }
-
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    color: var(--secondary-color); /* تفتيح لون النص ليظهر على الخلفية الداكنة */
-}
-
-.hero-buttons a {
-    margin-left: 15px;
-}
-
-.image-content img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* ظل داكن ليتناسب مع الخلفية الزرقاء */
-}
-
-/* --------------------------------------------------------- */
-
-/* ========================================================= */
-/* 5. بطاقات الخدمات والمميزات (Cards Grid) */
-/* ========================================================= */
 
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
+    margin-top: 40px;
 }
 
-/* تنسيق بطاقة الخدمة */
 .service-card {
-    background-color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: var(--card-bg-color);
+    color: var(--text-color);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: var(--shadow-light);
-    text-align: center;
-    transition: transform 0.3s;
-    display: flex; /* لضمان ترتيب المحتوى */
-    flex-direction: column;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; 
     justify-content: space-between;
 }
 
 .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.icon-style {
+    font-size: 3.5rem;
+    color: var(--product-primary-color); /* يُتجاوز في الصفحات الفردية */
+    margin-bottom: 20px;
 }
 
 .service-card img {
     width: 100px;
     height: 100px;
     object-fit: contain;
-    margin: 0 auto 15px auto; /* توسيط الصورة */
-    border-radius: 50%;
+    margin-bottom: 20px;
 }
 
 .service-card h3 {
-    color: var(--primary-color);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 10px;
+    color: var(--text-color);
 }
 
-.card-link {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 700;
+.service-card p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.price-text {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--product-primary-color); /* يُتجاوز في الصفحات الفردية */
+    margin: 20px 0;
+}
+
+.btn-primary {
     display: block;
-    margin-top: 15px;
-}
-
-/* تنسيق بطاقة المميزات (Features) */
-.features .feature-card {
-    background-color: var(--white-color);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: var(--shadow-light);
-    text-align: center;
-}
-
-.features .feature-card i {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
-
-/* --------------------------------------------------------- */
-
-/* ========================================================= */
-/* 6. قسم طرق الدفع (Payments) */
-/* ========================================================= */
-
-.payments {
-    background-color: var(--secondary-color);
-}
-
-.payment-logos {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.payment-logos img {
-    height: 60px;
-    width: auto;
-    object-fit: contain;
-    border-radius: 5px;
-    background-color: var(--white-color);
-    padding: 5px 10px;
-    box-shadow: var(--shadow-light);
-}
-
-/* --------------------------------------------------------- */
-
-/* ========================================================= */
-/* 7. قسم آراء العملاء (Reviews Carousel) */
-/* ========================================================= */
-
-.reviews {
-    background-color: var(--white-color);
-}
-
-.review-carousel {
-    display: flex;
-    gap: 20px;
-    padding-bottom: 20px;
-    overflow-x: auto; 
-    -webkit-overflow-scrolling: touch; 
-    scrollbar-width: none; 
-    -ms-overflow-style: none;  
-}
-.review-carousel::-webkit-scrollbar {
-    display: none; 
-}
-
-.review-card {
-    min-width: 85vw; 
-    max-width: 350px;
-    flex-shrink: 0; 
-    padding: 25px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    text-align: center;
-    background-color: #fff;
-    box-shadow: var(--shadow-light);
-}
-
-.review-card img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 15px;
-}
-
-.review-card .quote {
-    font-style: italic;
-    margin-bottom: 15px;
-}
-
-.review-card .rating {
-    color: gold;
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
-
-.review-card .client-name {
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-/* --------------------------------------------------------- */
-
-/* ========================================================= */
-/* 8. التذييل والاتصال (Footer & Contact) */
-/* ========================================================= */
-
-.contact {
-    text-align: center;
-    background-color: var(--secondary-color);
-}
-
-.contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    text-align: right;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 15px;
-    border: 1px solid #ddd;
+    background-color: var(--buy-button-color);
+    color: #fff !important;
+    border: none;
+    padding: 12px 25px;
     border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.3s;
     width: 100%;
-    box-sizing: border-box;
-    font-family: 'Cairo', sans-serif;
-    font-size: 1rem;
+    margin-top: auto; /* يدفعه للأسفل */
 }
 
-.contact-form textarea {
-    resize: vertical;
+.btn-primary:hover {
+    background-color: #388e3c; /* أخضر أغمق عند التحويم */
 }
 
-.contact-form .btn-primary {
-    align-self: center;
-    width: auto;
-}
-
+/* --------------------------------------
+   5. تنسيق التذييل (Footer)
+   -------------------------------------- */
 .footer {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    padding: 25px 0;
+    background-color: var(--footer-bg);
+    color: white;
+    padding: 30px 0;
     text-align: center;
 }
-
 .footer .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
-
-.social-links a {
-    color: var(--white-color);
+.footer p {
+    margin: 10px 0;
+    color: #ccc;
+}
+.footer .social-links a {
+    color: white;
     font-size: 1.5rem;
-    margin-right: 15px;
+    margin: 0 10px;
     transition: color 0.3s;
 }
-
-.social-links a:hover {
-    color: #a8b0e8; 
+.footer .social-links a:hover {
+    color: #FFEB3B;
 }
 
-/* --------------------------------------------------------- */
 
-/* ========================================================= */
-/* 9. العناصر العائمة والمنبثقة (Float & Popups) */
-/* ========================================================= */
-
-/* زر واتساب العائم */
+/* --------------------------------------
+   6. زر الواتساب العائم
+   -------------------------------------- */
 .whatsapp-float {
-    position: fixed; 
+    position: fixed;
     width: 60px;
     height: 60px;
     bottom: 40px;
-    left: 40px; 
-    background-color: #25d366; 
+    left: 40px;
+    background-color: #25d366;
     color: #FFF;
-    border-radius: 50px; 
+    border-radius: 50px;
     text-align: center;
     font-size: 30px;
-    box-shadow: 2px 2px 3px #999; 
-    z-index: 1000; 
+    z-index: 100;
     display: flex;
-    justify-content: center;
     align-items: center;
-    text-decoration: none; 
+    justify-content: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    transition: transform 0.3s;
 }
-
 .whatsapp-float:hover {
-    background-color: #128C7E;
+    transform: scale(1.1);
 }
 
-/* النافذة المنبثقة (Popup) - للاستخدام مع كود JavaScript */
-#welcomePopup {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); 
-    z-index: 2000; /* أعلى من كل شيء */
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-}
-
-.popup-content {
-    background-color: var(--white-color);
-    color: var(--text-color);
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    animation: fadeIn 0.5s; 
-}
-
-.popup-content h2 {
-    color: var(--primary-color); 
-    margin-bottom: 15px;
-}
-.popup-content button {
-    background-color: var(--primary-color);
-}
-.popup-content button:hover {
-    background-color: #111A5B;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-/* --------------------------------------------------------- */
-
-/* ========================================================= */
-/* 10. التجاوب مع الشاشات الصغيرة (Media Queries) */
-/* ========================================================= */
-
-/* الأجهزة اللوحية (Tablet - أقل من 992px) */
-@media (max-width: 992px) {
-    /* تغيير الترتيب العمودي لقسم Hero */
-    .hero-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .hero-content .text-content {
-        order: 2;
-    }
-
-    .hero-content .image-content {
-        order: 1;
-        margin-bottom: 30px;
-    }
-}
-
-/* الهواتف الذكية (Mobile - أقل من 768px) */
+/* --------------------------------------
+   7. الاستجابة (Responsive Design)
+   -------------------------------------- */
 @media (max-width: 768px) {
     
-    /* 1. قائمة التنقل (Navigation) - لجعل القائمة تعمل على الجوال */
-    .header .nav {
+    /* القائمة المتجاوبة */
+    .nav {
         display: none;
         flex-direction: column;
+        width: 100%;
+        background-color: var(--header-bg);
         position: absolute;
-        top: 60px;
-        right: 0;
+        top: 60px; /* تحت الترويسة */
         left: 0;
-        background-color: var(--white-color);
-        box-shadow: var(--shadow-light);
-        padding: 10px 0;
-        z-index: 999;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
     }
 
-    .header .nav.active {
+    .nav.active {
         display: flex;
     }
 
     .nav ul {
         flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .nav ul li {
         text-align: center;
+        width: 100%;
     }
     
+    .nav ul li a {
+        padding: 10px 0;
+        display: block;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
     .menu-icon {
-        display: block; /* إظهار زر القائمة */
-    }
-
-    /* 2. قسم الترحيب (Hero) - ضمان الترتيب العمودي وتوسيط الأزرار */
-    .hero-content {
-        gap: 20px;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-        display: flex; 
-        flex-wrap: wrap; 
+        display: block; /* إظهار أيقونة القائمة */
     }
     
-    /* 3. التذييل (Footer) - ترتيب عمودي */
+    /* تعديل تنسيق التذييل في الجوال */
     .footer .container {
         flex-direction: column;
-        gap: 15px;
+        text-align: center;
+    }
+    .footer .social-links {
+        margin-top: 15px;
     }
     
-    /* 4. تحويل شبكات البطاقات (الخدمات والمميزات) إلى عرض عمودي */
-    .cards-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* الهواتف الأصغر (Smaller Mobile - أقل من 480px) */
-@media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    /* الأزرار بشكل عمودي */
-    .hero-buttons {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .hero-buttons a {
-        margin-left: 0;
-        width: 100%;
+    /* تعديل زر الواتساب ليصبح أصغر وفي الزاوية السفلية اليسرى */
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        left: 20px;
+        font-size: 24px;
     }
 }
