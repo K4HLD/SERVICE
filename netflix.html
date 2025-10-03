@@ -97,16 +97,18 @@
 
         /* تنسيق الأزرار (اطلب الآن) */
         .btn-primary {
-            display: inline-block;
+            display: block; /* تغيير إلى block */
             background-color: var(--primary-color);
             color: #fff !important;
             padding: 12px 25px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
-            margin-top: 10px;
+            margin: 10px auto 0 auto;
             transition: background-color 0.3s ease;
-            width: 80% 0 auto; 
+            width: 80%; /* لتبدو بشكل أفضل */
+            border: none; /* إزالة حدود الزر الافتراضية */
+            cursor: pointer;
         }
 
         .btn-primary:hover {
@@ -133,12 +135,12 @@
                         40 درهم
                     </p>
                     
-                    <a 
-                        href="https://wa.me/212770306095?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%86%D8%AA%D9%81%D9%84%D9%83%D8%B3%20%D8%B4%D9%87%D8%B1%D9%8A%20-%2040%20%D8%AF%D8%B1%D9%87%D9%85" 
-                        target="_blank" 
-                        class="btn btn-primary card-link">
+                    <button 
+                        class="btn btn-primary purchase-btn"
+                        data-item-name="Netflix - اشتراك شهري"
+                        data-item-price="40">
                         اطلب الآن
-                    </a>
+                    </button>
                 </div>
 
                 <div class="service-card">
@@ -151,12 +153,12 @@
                         100 درهم
                     </p>
                     
-                    <a 
-                        href="https://wa.me/212770306095?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%86%D8%AA%D9%81%D9%84%D9%83%D8%B3%20%D9%84%D9%80%203%20%D8%A3%D8%B4%D9%87%D8%B1%20-%20100%20%D8%AF%D8%B1%D9%87%D9%85" 
-                        target="_blank" 
-                        class="btn btn-primary card-link">
+                    <button 
+                        class="btn btn-primary purchase-btn"
+                        data-item-name="Netflix - اشتراك 3 أشهر"
+                        data-item-price="100">
                         اطلب الآن
-                    </a>
+                    </button>
                 </div>
 
                 <div class="service-card">
@@ -169,20 +171,58 @@
                         180 درهم
                     </p>
                     
-                    <a 
-                        href="https://wa.me/212770306095?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%86%D8%AA%D9%81%D9%84%D9%83%D8%B3%20%D9%84%D9%80%206%20%D8%A3%D8%B4%D9%87%D8%B1%20-%20180%20%D8%AF%D8%B1%D9%87%D9%85" 
-                        target="_blank" 
-                        class="btn btn-primary card-link">
+                    <button 
+                        class="btn btn-primary purchase-btn"
+                        data-item-name="Netflix - اشتراك 6 أشهر"
+                        data-item-price="180">
                         اطلب الآن
-                    </a>
+                    </button>
                 </div>
                 
             </div>
         </div>
     </section>
 
-<a href="https://wa.me/212770306095?text=مرحبا 👋! أريد الحصول على مزيد من المعلومات!" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i>
-</a>
+    <a href="https://wa.me/212770306095?text=مرحبا 👋! أريد الحصول على مزيد من المعلومات!" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    
+    <script src="app.js"></script> 
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // الآن نستخدم الكلاس purchase-btn ليتطابق مع app.js
+            const buyButtons = document.querySelectorAll('.purchase-btn'); 
+            const whatsappNumber = '212770306095';
+
+            buyButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    
+                    // الحصول على بيانات المنتج من خصائص البيانات
+                    const productName = button.getAttribute('data-item-name');
+                    const productPrice = button.getAttribute('data-item-price');
+                    
+                    // يتم هنا التوثيق التلقائي عبر app.js 
+                    // (يتم تشغيله تلقائياً بفضل الكلاس purchase-btn ووجود app.js)
+
+                    // إنشاء محتوى رسالة الواتساب
+                    const message = `مرحباً، أود طلب الخدمة التالية من متجركم:\n\n*المنتج:* ${productName}\n*السعر:* ${productPrice} درهم مغربي (DH)\n\nالرجاء إخباري بخطوات الدفع لإتمام الطلب. شكراً.`;
+                    
+                    // ترميز الرسالة لرابط URL
+                    const encodedMessage = encodeURIComponent(message);
+                    
+                    // بناء رابط واتساب النهائي
+                    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                    
+                    // فتح الرابط
+                    window.open(whatsappURL, '_blank');
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
