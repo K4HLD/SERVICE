@@ -178,46 +178,58 @@
             
             <div id="product-list" class="cards-grid">
                 
-                <div class="product-card" data-package="260 عملة eFootball" data-price="25">
+                <div class="product-card">
                   <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/87/EFootball_logo.svg/1200px-EFootball_logo.svg.png" alt="عملات eFootball" style="width: 100px;">
                     <h3>260 عملة (Coins)</h3>
                     <p class="price">السعر: 25 درهم (DH)</p>
-                    <button class="btn btn-primary buy-btn" data-product-name="260 عملة eFootball">اطلب الآن</button>
+                    <button class="btn btn-primary purchase-btn" 
+                            data-item-name="eFootball - 260 عملة" 
+                            data-item-price="25">اطلب الآن</button>
                 </div>
                 
-                <div class="product-card" data-package="550 عملة eFootball" data-price="55">
+                <div class="product-card">
                     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/87/EFootball_logo.svg/1200px-EFootball_logo.svg.png" alt="عملات eFootball" style="width: 100px;">
                     <h3>550 عملة (Coins)</h3>
                     <p class="price">السعر: 55 درهم (DH)</p>
-                    <button class="btn btn-primary buy-btn" data-product-name="550 عملة eFootball">اطلب الآن</button>
+                    <button class="btn btn-primary purchase-btn" 
+                            data-item-name="eFootball - 550 عملة" 
+                            data-item-price="55">اطلب الآن</button>
                 </div>
                 
-                <div class="product-card" data-package="1170 عملة eFootball" data-price="110">
+                <div class="product-card">
                     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/87/EFootball_logo.svg/1200px-EFootball_logo.svg.png" alt="عملات eFootball" style="width: 100px;">
                     <h3>1170 عملة (Coins)</h3>
                     <p class="price">السعر: 110 درهم (DH)</p>
-                    <button class="btn btn-primary buy-btn" data-product-name="1170 عملة eFootball">اطلب الآن</button>
+                    <button class="btn btn-primary purchase-btn" 
+                            data-item-name="eFootball - 1170 عملة" 
+                            data-item-price="110">اطلب الآن</button>
                 </div>
                 
-                <div class="product-card" data-package="2560 عملة eFootball" data-price="220">
+                <div class="product-card">
                     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/87/EFootball_logo.svg/1200px-EFootball_logo.svg.png" alt="عملات eFootball" style="width: 100px;">
                     <h3>2560 عملة (Coins)</h3>
                     <p class="price">السعر: 220 درهم (DH)</p>
-                    <button class="btn btn-primary buy-btn" data-product-name="2560 عملة eFootball">اطلب الآن</button>
+                    <button class="btn btn-primary purchase-btn" 
+                            data-item-name="eFootball - 2560 عملة" 
+                            data-item-price="220">اطلب الآن</button>
                 </div>
 
-                <div class="product-card" data-package="5700 عملة eFootball" data-price="440">
+                <div class="product-card">
                     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/87/EFootball_logo.svg/1200px-EFootball_logo.svg.png" alt="عملات eFootball" style="width: 100px;">
                     <h3>5700 عملة (Coins)</h3>
                     <p class="price">السعر: 440 درهم (DH)</p>
-                    <button class="btn btn-primary buy-btn" data-product-name="5700 عملة eFootball">اطلب الآن</button>
+                    <button class="btn btn-primary purchase-btn" 
+                            data-item-name="eFootball - 5700 عملة" 
+                            data-item-price="440">اطلب الآن</button>
                 </div>
 
-                <div class="product-card" data-package="12800 عملة eFootball" data-price="990">
+                <div class="product-card">
                     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/87/EFootball_logo.svg/1200px-EFootball_logo.svg.png" alt="عملات eFootball" style="width: 100px;">
                     <h3>12800 عملة (Coins)</h3>
                     <p class="price">السعر: 990 درهم (DH)</p>
-                    <button class="btn btn-primary buy-btn" data-product-name="12800 عملة eFootball">اطلب الآن</button>
+                    <button class="btn btn-primary purchase-btn" 
+                            data-item-name="eFootball - 12800 عملة" 
+                            data-item-price="990">اطلب الآن</button>
                 </div>
                 
                 </div>
@@ -235,20 +247,31 @@
         </div>
     </footer>
 
+    <a href="https://wa.me/212770306095?text=مرحبا 👋! أريد الحصول على مزيد من المعلومات حول شحن عملات eFootball!" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    
+    <script src="app.js"></script> 
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const buyButtons = document.querySelectorAll('.buy-btn');
-            // استخدام نفس رقم واتساب المتجر الأصلي
-            const whatsappNumber = '212770306095'; 
+            // الآن نستخدم الكلاس purchase-btn ليتطابق مع app.js
+            const buyButtons = document.querySelectorAll('.purchase-btn'); 
+            const whatsappNumber = '212770306095';
 
             buyButtons.forEach(button => {
                 button.addEventListener('click', (event) => {
-                    // الحصول على بيانات المنتج من البطاقة الأم
-                    const card = event.target.closest('.product-card');
-                    const productName = card.getAttribute('data-package');
-                    const productPrice = card.getAttribute('data-price');
                     
-                    // إنشاء محتوى الرسالة باللغة العربية
+                    // الحصول على بيانات المنتج من خصائص البيانات
+                    const productName = button.getAttribute('data-item-name');
+                    const productPrice = button.getAttribute('data-item-price');
+                    
+                    // يتم هنا التوثيق التلقائي عبر app.js (يتم تشغيله من app.js عبر نفس الكلاس purchase-btn)
+
+                    // إنشاء محتوى رسالة الواتساب
                     const message = `مرحباً، أود طلب الخدمة التالية من متجركم:\n\n*المنتج:* ${productName}\n*السعر:* ${productPrice} درهم مغربي (DH)\n\nالرجاء إخباري بخطوات الدفع لإتمام الطلب. شكراً.`;
                     
                     // ترميز الرسالة لرابط URL
@@ -257,20 +280,16 @@
                     // بناء رابط واتساب النهائي
                     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
                     
-                    // فتح الرابط (سيفتح تطبيق الواتساب مباشرة مع الرسالة المعبأة)
+                    // فتح الرابط
                     window.open(whatsappURL, '_blank');
                 });
             });
 
-            // تبديل قائمة التنقل للجوال (لضمان عمل الزر على الموبايل)
+            // تبديل قائمة التنقل للجوال
             document.querySelector('.menu-icon').addEventListener('click', () => {
                 document.querySelector('.nav').classList.toggle('active');
             });
         });
     </script>
-
-<a href="https://wa.me/212770306095?text=مرحبا 👋! أريد الحصول على مزيد من المعلومات حول شحن عملات eFootball!" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i>
-</a>
-
 </body>
 </html>
