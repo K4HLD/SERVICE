@@ -1,215 +1,233 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ9uWO14/kQoSA+6x0AuwB/6B50/b7g21L8s5tI6/A6qA2wF2sL6gI2l6F6uFg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K4HLD Store - K4HLD STORE</title>
-    <link rel="stylesheet" href="style.css">
+    <title>K4HLD Store - الصفحة الرئيسية</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+    
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
     <style>
-        /* إخفاء قسم Firebase في الوضع الافتراضي أو عند عدم الحاجة */
-        .firebase-auth-container {
-            padding: 20px;
-            margin: 20px auto;
+        /* التخصيصات الخاصة بصفحة index.html */
+        
+        /* نمط القسم الرئيسي (البطل) */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1200x500/1A237E/FFFFFF?text=K4HLD+Store'); /* يمكنك استبدال الرابط بصورة مناسبة */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: #ddd;
+        }
+
+        /* زر رئيسي يتبع النمط العام */
+        .btn-main {
+            display: inline-block;
+            background-color: #e50914; /* أحمر بارز */
+            color: white !important;
+            padding: 15px 30px;
             border-radius: 8px;
-            max-width: 400px;
-            background: #f8f8f8;
-            border: 1px solid #eee;
-        }
-        #purchase-section {
-            border: 1px dashed #ccc;
-            padding: 15px;
-            margin-top: 10px;
+            font-weight: 700;
+            transition: background-color 0.3s;
         }
 
-        /* قواعد CSS يجب أن تكون في ملف style.css لجعل زر القائمة يعمل */
-        @media (max-width: 768px) {
-            .nav {
-                display: none; /* مخفي في الجوال افتراضيا */
-                flex-direction: column;
-                position: absolute;
-                top: 60px; /* تحت الهيدر */
-                right: 0;
-                width: 100%;
-                background: #fff;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                z-index: 10;
-            }
-            .nav.active {
-                display: flex; /* يظهر عند إضافة كلاس active */
-            }
-            .menu-icon {
-                display: block; /* إظهار أيقونة القائمة في الجوال */
-            }
+        .btn-main:hover {
+            background-color: #b2070f;
         }
+
+        /* تنسيق أقسام الموقع العامة */
+        section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--header-bg);
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        /* قسم لماذا نحن (Why Us) */
+        #why-us {
+            background-color: #fff;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .feature-item {
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            background-color: #f9f9f9;
+        }
+        .feature-item i {
+            font-size: 2.5rem;
+            color: var(--link-color);
+            margin-bottom: 15px;
+        }
+        .feature-item h3 {
+            color: var(--header-bg);
+            margin-bottom: 10px;
+        }
+
+        /* قسم اتصل بنا (Contact) */
+        #contact {
+             background-color: var(--background-page);
+        }
+        .contact-info {
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+        .contact-info a {
+            font-weight: 700;
+            color: var(--header-bg);
+            text-decoration: underline;
+        }
+
     </style>
-
 </head>
 <body>
 
     <header class="header">
         <div class="container">
-            <a href="#" class="logo">K4HLD Store</a>
+            <a href="index.html" class="logo">K4HLD Store.</a>
             <nav class="nav">
                 <ul>
                     <li><a href="#services">خدماتنا</a></li>
                     <li><a href="#why-us">لماذا نحن</a></li>
-                    <li><a href="#" id="auth-link">تسجيل/سجل الشراء</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
                 </ul>
             </nav>
             <div class="menu-icon"><i class="fas fa-bars"></i></div>
         </div>
     </header>
 
-    <section id="firebase-auth-section" class="firebase-auth-container" style="display:none;">
-        
-        <div id="auth-ui">
-            <h3>تسجيل جديد</h3>
-            <form id="signup-form">
-                <input type="email" id="signup-email" placeholder="البريد الإلكتروني" required>
-                <input type="password" id="signup-password" placeholder="كلمة المرور (أكثر من 6 أحرف)" required>
-                <button type="submit">إنشاء حساب</button>
-            </form>
-            
-            <hr>
-            
-            <h3>تسجيل الدخول</h3>
-            <form id="login-form">
-                <input type="email" id="login-email" placeholder="البريد الإلكتروني" required>
-                <input type="password" id="login-password" placeholder="كلمة المرور" required>
-                <button type="submit">دخول</button>
-            </form>
-        </div>
-
-        <div id="purchase-section" style="display:none;">
-            <h2>مرحباً بك! <span id="user-email-display" style="color: #007bff;"></span></h2>
-            <button id="logout-btn">تسجيل الخروج</button>
-            <hr>
-
-            <h4>سجل المشتريات الخاص بك:</h4>
-            <ul id="history-list">
-                </ul>
-        </div>
-        <p id="status-message" style="color:red;"></p>
-    </section>
-
     <section class="hero">
-        <div class="container hero-content">
-            <div class="text-content">
-                <h1>أهلاً بك في متجرنا</h1>
-                <p>ابحث عن جميع الخدمات التي تريدها بأفضل الأسعار سرعة - أمان - وثقة.</p>
-                <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary">عرض الخدمات</a>
-                    <a href="https://wa.me/212770306095" class="btn btn-secondary" target="_blank">
-                        <i class="fab fa-whatsapp"></i> اتصل على واتساب
-                    </a>
-                </div>
-            </div>
-            <div class="image-content">
-                <img src="IMG_20251002_012232.jpg" alt="شخصية متجر">
-            </div>
+        <div class="container">
+            <h1>أسرع شحن وأفضل أسعار في المغرب</h1>
+            <p>متجرك الموثوق لشحن جواهر الألعاب واشتراكات الخدمات الرقمية.</p>
+            <a href="#services" class="btn-main">اكتشف خدماتنا</a>
         </div>
     </section>
 
-    <section id="services" class="services">
+    <section id="services" class="products-section">
         <div class="container">
-            <h2>خدماتنا</h2>
-            <div class="cards-grid" id="services-grid">
-                
-                <div class="service-card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0NA457V5sNKis6B8XdFqPmFu4IjrkQtp7zZYTgM9hTQ&s=10" alt="Free Fire">
-                    <h3>Free Fire</h3>
-                    <p>اشحن جواهر فري فاير بأمان وعلى الفور.</p>
-                    <a href="freefire.html" class="card-link">عرض المنتجات</a>
-                </div>
-                
-                <div class="service-card">
-                    <img src="https://i.pinimg.com/originals/c5/ba/4b/c5ba4bc7eeaec96b7f228fad9b86fad6.jpg" alt="eFOOTBALL">
-                    <h3>eFOOTBALL</h3>
-                    <p>اشحن عملات ايفوتبول بأسعار تنافسية!.</p>
-                    <a href="efootball.html" class="card-link">عرض المنتجات</a>
-                </div>
-                
-                <div class="service-card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9pOh4Zqwg_MyOhi0-Ep6vuTfYUFW3ENdl0XLlW2pAc0JqgqftjkbU0rM&s=10" alt="Netflix">
-                    <h3>Netflix</h3>
-                    <p>احصل على اشتراكات نتفليكس 4K بأسعار مناسبة.</p>
-                    <a href="netflix.html" class="card-link">عرض المنتجات</a>
-                </div>
-                
-                <div class="service-card">
-                    <img src="https://i.ibb.co/YTbF918W/1000-F-479093103-ixzzt-AVf-Vzvbf-Bky-Mx-Pt-WLkz-Xm88-YHk-V.jpg" alt="Social media services">
-                    <h3>خدمات التواصل الاجتماعي</h3>
-                    <p>قم بتعزيز حساباتك بأفضل خدماتنا.</p>
-                    <a href="https://wa.me/212770306095" class="card-link" target="_blank">اطلب الآن</a> 
-                </div> 
-
-            </div>     
-        </div>         
-    </section>
-    
-    <section id="why-us" class="features">
-        <div class="container">
-            <h2>لماذا تختارنا؟</h2>
+            <h2 class="section-title">خدماتنا المميزة</h2>
+            
             <div class="cards-grid">
-                <div class="feature-card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>أمان 100%</h3>
-                    <p>معاملات آمنة وسريعة .</p>
+                
+                <div class="service-card">
+                    <img src="https://logolook.net/wp-content/uploads/2023/12/Free-Fire-Logo-PNG.png" alt="Free Fire Logo" loading="lazy">
+                    <h3>شحن جواهر Free Fire</h3>
+                    <p>احصل على جميع كميات الجواهر لحسابك بأمان تام وأسعار منافسة.</p>
+                    <a href="freefire.html" class="btn btn-primary" style="background-color: #E61E26;">اطلب الآن</a>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-truck-fast"></i>
-                    <h3>تسليم فوري</h3>
-                    <p>استلم خدمتك فوراً بعد إتمام عملية الدفع.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-headset"></i>
-                    <h3>دعم 24/7</h3>
-                    <p>نحن متاحون دائماً لمساعدتك في أي وقت.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="payments">
-        <div class="container">
-            <h2>طرق الدفع</h2>
-            <div class="payment-logos">
-                <img src="https://i.ibb.co/qLYrwP4v/p-Aa3-RS7m-400x400.png" alt="CIH">
-                <img src="https://i.ibb.co/G4XwmfZT/81717516-2471020243215670-4841668842679697408-n.jpg" alt="Banque Populaire">
-                <img src="https://i.ibb.co/DsrmQ94/al-barid-bank-logo.jpg" alt="Al Barid Bank">
-                <img src="https://i.ibb.co/JjCBp412/Orange-logo.jpg" alt="Orange">
-                <img src="https://i.ibb.co/DdFCbwD/482796598-10075022319194319-8766807728744015663-n.jpg" alt="Cash Plus">
-                <img src="https://play-lh.googleusercontent.com/wpG8fI-_4FPPQv7m90bCSbPt8xJmBp9v2QI-R6SYkXXxA0uy2bR_BDnT4yoL7No57qA" alt="inwi">
-            </div>
-        </div>
-    </section>
+                <div class="service-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/87/EFootball_logo.svg/1200px-EFootball_logo.svg.png" alt="eFootball Logo" loading="lazy">
+                    <h3>عملات eFootball Coins</h3>
+                    <p>شحن سريع ومضمون لعملات eFootball لتكوين فريق أحلامك.</p>
+                    <a href="efootball.html" class="btn btn-primary" style="background-color: #1A237E;">اطلب الآن</a>
+                </div>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <footer class="footer">
-                <p>© 2025 K4HLD STORE - جميع الحقوق محفوظة.</p>
-                <div class="social-links">
-                    <a href="https://wa.me/212770306095" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.instagram.com/k4h_d?igsh=dmN1bnJ1ZXozNm53" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://t.me/k4hldchannel" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                </div> 
-            </footer>
+                <div class="service-card">
+                    <i class="fab fa-netflix icon-style" style="color: #e50914; font-size: 3.5rem;"></i>
+                    <h3>اشتراكات Netflix</h3>
+                    <p>استمتع بآلاف الأفلام والمسلسلات بجودة عالية وبأفضل الأسعار.</p>
+                    <a href="netflix.html" class="btn btn-primary" style="background-color: #e50914;">اطلب الآن</a>
+                </div>
+                
+            </div>
         </div>
     </section>
     
+    <section id="why-us">
+        <div class="container">
+            <h2 class="section-title">لماذا تختار متجر K4HLD؟</h2>
+            <div class="features-grid">
+                
+                <div class="feature-item">
+                    <i class="fas fa-bolt"></i>
+                    <h3>سرعة التنفيذ</h3>
+                    <p>يتم تنفيذ جميع الطلبات في غضون دقائق قليلة بعد الدفع.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <i class="fas fa-lock"></i>
+                    <h3>أمان وموثوقية</h3>
+                    <p>نضمن أمان بياناتك وسلامة حساباتك بنسبة 100%.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <i class="fas fa-tags"></i>
+                    <h3>أفضل الأسعار</h3>
+                    <p>نقدم أسعارًا تنافسية لا تجدها في المتاجر الأخرى.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">تواصل معنا</h2>
+            <p>نحن دائمًا في خدمتك للإجابة على استفساراتك وتلبية طلباتك.</p>
+            <div class="contact-info">
+                <i class="fab fa-whatsapp"></i> واتساب: 
+                <a href="https://wa.me/212770306095" target="_blank">212770306095</a>
+            </div>
+             <div class="contact-info">
+                <i class="fas fa-map-marker-alt"></i> الموقع: 
+                <p style="display: inline;">المغرب، الرباط.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 K4HLD Store. جميع الحقوق محفوظة.</p>
+            <div class="social-links">
+                <a href="https://wa.me/212770306095" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
     <a href="https://wa.me/212770306095?text=مرحبا 👋! أريد الحصول على مزيد من المعلومات!" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i>
     </a>
     
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-    
-    <script src="app.js"></script> 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuIcon = document.querySelector('.menu-icon');
+            const navMenu = document.querySelector('.nav');
+
+            if (menuIcon && navMenu) {
+                menuIcon.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>
