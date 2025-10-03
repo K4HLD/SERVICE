@@ -3,59 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K4HLD Store - شحن جواهر Free Fire</title>
+    <title>شحن جواهر فري فاير - K4HLD Store</title>
+    
     <link rel="stylesheet" href="style.css"> 
+    
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
     <style>
-        .product-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            background-color: #FFFFFF;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-            height: 100%; /* ضمان ارتفاع متساوٍ للبطاقات */
-            justify-content: space-between;
+        /* المتغيرات الخاصة بصفحة فري فاير (اللون الأحمر الداكن) */
+        :root {
+            --product-primary-color: #E61E26; /* أحمر قوي */
+            --header-bg: #1A237E; /* لون الترويسة موحد */
+            --header-text: white;
+            --card-shadow-product: 0 4px 12px rgba(230, 30, 38, 0.2);
         }
-        .product-card:hover {
-            transform: translateY(-5px);
+
+        /* override الأنماط العامة */
+        .price-text {
+            color: var(--product-primary-color);
+            font-size: 2.2rem;
+            font-weight: 800;
         }
-        .product-card img {
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
+
+        .btn-primary {
+            background-color: var(--product-primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #A8161D;
+        }
+
+        .icon-style {
+            font-size: 3.5rem;
+            color: var(--product-primary-color);
             margin-bottom: 20px;
         }
-        .product-card .price {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #1A237E; /* اللون الأزرق الغامق */
-            margin: 20px auto 15px auto;
-        }
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            padding: 0 15px;
-        }
-        .btn-primary {
-            background-color: #4CAF50; /* لون أخضر للواتساب */
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 700;
-            transition: background-color 0.3s;
-            width: 100%;
-            margin-top: auto;
-        }
-        .btn-primary:hover {
-            background-color: #45a049;
+
+        /* تنسيقات خاصة بالبطاقة (تستخدم الأنماط العامة مع تخصيص بسيط) */
+        .service-card:hover {
+             box-shadow: var(--card-shadow-product);
         }
     </style>
 </head>
@@ -75,152 +62,106 @@
         </div>
     </header>
 
-    <section class="products-section" style="padding: 80px 0;">
+
+    <section id="products" class="services">
         <div class="container">
-            <h2 style="text-align: center; color: #1A237E;">باقات شحن Free Fire</h2>
-            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 40px; color: white">اختر الباقة المناسبة لك وسيتم تحويلك إلى واتساب لإتمام الطلب.</p>
+            <h2 style="padding-top: 40px;">منتجات شحن جواهر Free Fire</h2>
             
-            <div id="product-list" class="cards-grid">
-                
-                <div class="product-card">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLZxgJpb9NCLiolK5LNfZijQdiZ0V4OdWVMAZkZl3TNFvFJ_IEOToz7aAX&s=10" alt="جواهر فري فاير" style="width: 100px;">
- 
-                    <h3>220 جوهرة (Diamonds)</h3>
-                    <p class="price">السعر 25 درهم (DH)</p>
-                    <button class="btn btn-primary purchase-btn" 
-                            data-item-name="Free Fire - 220 جوهرة" 
-                            data-item-price="25">اطلب الآن</button>
+            <div class="cards-grid">
+
+                <div class="service-card">
+                    <i class="fas fa-gem icon-style"></i> 
+                    <h3>500 جوهرة</h3>
+                    <p>شحن سريع ومضمون لحسابك.</p>
+                    <p class="price-text">
+                        45 درهم
+                    </p>
+                    <button 
+                        class="btn btn-primary purchase-btn"
+                        data-item-name="Free Fire - 500 جوهرة"
+                        data-item-price="45">
+                        اطلب الآن
+                    </button>
                 </div>
 
-                <div class="product-card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLZxgJpb9NCLiolK5LNfZijQdiZ0V4OdWVMAZkZl3TNFvFJ_IEOToz7aAX&s=10" alt="جواهر فري فاير" style="width: 100px;">
-
-                    <h3>580 جوهرة (Diamonds)</h3>
-                    <p class="price">السعر: 60 درهم (DH)</p>
-                    <button class="btn btn-primary purchase-btn" 
-                            data-item-name="Free Fire - 580 جوهرة" 
-                            data-item-price="60">اطلب الآن</button>
-                </div>
-                
-                <div class="product-card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLZxgJpb9NCLiolK5LNfZijQdiZ0V4OdWVMAZkZl3TNFvFJ_IEOToz7aAX&s=10" alt="جواهر فري فاير" style="width: 100px;">
-                    <h3>1188 جوهرة (Diamonds)</h3>
-                    <p class="price">السعر: 110 درهم (DH)</p>
-                    <button class="btn btn-primary purchase-btn" 
-                            data-item-name="Free Fire - 1188 جوهرة" 
-                            data-item-price="110">اطلب الآن</button>
+                <div class="service-card">
+                    <i class="fas fa-crown icon-style"></i>
+                    <h3>1000 جوهرة + 100 بونص</h3>
+                    <p>عرض خاص! شحن 1100 جوهرة.</p>
+                    <p class="price-text">
+                        80 درهم
+                    </p>
+                    <button 
+                        class="btn btn-primary purchase-btn"
+                        data-item-name="Free Fire - 1000 جوهرة"
+                        data-item-price="80">
+                        اطلب الآن
+                    </button>
                 </div>
 
-                <div class="product-card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLZxgJpb9NCLiolK5LNfZijQdiZ0V4OdWVMAZkZl3TNFvFJ_IEOToz7aAX&s=10" alt="جواهر فري فاير" style="width: 100px;">
-                    <h3>2420 جوهرة (Diamonds)</h3>
-                    <p class="price">السعر: 240 درهم (DH)</p>
-                    <button class="btn btn-primary purchase-btn" 
-                            data-item-name="Free Fire - 2420 جوهرة" 
-                            data-item-price="240">اطلب الآن</button>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLZxgJpb9NCLiolK5LNfZijQdiZ0V4OdWVMAZkZl3TNFvFJ_IEOToz7aAX&s=10" alt="جواهر فري فاير" style="width: 100px;">
-                    <h3>4200 جوهرة (Diamonds)</h3>
-                    <p class="price">السعر: 450 درهم (DH)</p>
-                    <button class="btn btn-primary purchase-btn" 
-                            data-item-name="Free Fire - 4200 جوهرة" 
-                            data-item-price="450">اطلب الآن</button>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLZxgJpb9NCLiolK5LNfZijQdiZ0V4OdWVMAZkZl3TNFvFJ_IEOToz7aAX&s=10" alt="جواهر فري فاير" style="width: 100px;">
-                    <h3>6200 جوهرة (Diamonds)</h3>
-                    <p class="price">السعر: 560 درهم (DH)</p>
-                    <button class="btn btn-primary purchase-btn" 
-                            data-item-name="Free Fire - 6200 جوهرة" 
-                            data-item-price="560">اطلب الآن</button>
+                <div class="service-card">
+                    <i class="fas fa-bolt icon-style"></i>
+                    <h3>البطاقة الأسبوعية</h3>
+                    <p>افتح الميزات الأسبوعية لجواهر مستمرة.</p>
+                    <p class="price-text">
+                        35 درهم
+                    </p>
+                    <button 
+                        class="btn btn-primary purchase-btn"
+                        data-item-name="Free Fire - البطاقة الأسبوعية"
+                        data-item-price="35">
+                        اطلب الآن
+                    </button>
                 </div>
                 
-                <div class="product-card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLZxgJpb9NCLiolK5LNfZijQdiZ0V4OdWVMAZkZl3TNFvFJ_IEOToz7aAX&s=10" alt="جواهر فري فاير" style="width: 100px;">
-                    <h3>10000 جوهرة (Diamonds)</h3>
-                    <p class="price">السعر: 900 درهم (DH)</p>
-                    <button class="btn btn-primary purchase-btn" 
-                            data-item-name="Free Fire - 10000 جوهرة" 
-                            data-item-price="900">اطلب الآن</button>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTauTg1xHgd1kEQPaB8OuwfFjmcEU5ZxJDwo0WdDLvrpb-m8HASfYyyyGs&s=10" alt="Weekly Membership">
-                    <h3>عضوية أسبوعية (Weekly Membership)</h3>
-                    <p class="price">السعر: 25 درهم (DH)</p>
-                    <button class="btn btn-primary purchase-btn" 
-                            data-item-name="Free Fire - عضوية أسبوعية" 
-                            data-item-price="25">اطلب الآن</button>
-                </div>
-                
-                <div class="product-card">
-                    <img src="https://www.lkgamers.com/wp-content/uploads/2025/04/20210422_152800-scaled-1-1200x818.jpg" alt="Monthly Membership">
-                    <h3>عضوية الشهرية (monthly Membership)</h3>
-                    <p class="price">السعر: 110 درهم (DH)</p>
-                    <button class="btn btn-primary purchase-btn" 
-                            data-item-name="Free Fire - عضوية شهرية" 
-                            data-item-price="110">اطلب الآن</button>
-                </div>
-                
-                </div>
+            </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 K4HLD Store. جميع الحقوق محفوظة.</p>
-            <div class="social-links">
-                <a href="https://wa.me/212770306095" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-            </div>
-        </div>
-    </footer>
-
     <a href="https://wa.me/212770306095?text=مرحبا 👋! أريد الحصول على مزيد من المعلومات!" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i>
     </a>
-
+    
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
     
     <script src="app.js"></script> 
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const buyButtons = document.querySelectorAll('.purchase-btn'); // الآن نستخدم الكلاس الجديد
+            
+            // تشغيل القائمة على الجوال
+            const menuIcon = document.querySelector('.menu-icon');
+            const navMenu = document.querySelector('.nav');
+
+            if (menuIcon && navMenu) {
+                menuIcon.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+
+            // منطق طلب الواتساب
+            const buyButtons = document.querySelectorAll('.purchase-btn'); 
             const whatsappNumber = '212770306095';
 
             buyButtons.forEach(button => {
                 button.addEventListener('click', (event) => {
-                    // الحصول على بيانات المنتج من خصائص البيانات
+                    
                     const productName = button.getAttribute('data-item-name');
                     const productPrice = button.getAttribute('data-item-price');
                     
-                    // يتم هنا التوثيق التلقائي عبر app.js (يتم تشغيله من app.js عبر نفس الكلاس purchase-btn)
-
-                    // إنشاء محتوى رسالة الواتساب
                     const message = `مرحباً، أود طلب الخدمة التالية من متجركم:\n\n*المنتج:* ${productName}\n*السعر:* ${productPrice} درهم مغربي (DH)\n\nالرجاء إخباري بخطوات الدفع لإتمام الطلب. شكراً.`;
                     
-                    // ترميز الرسالة لرابط URL
                     const encodedMessage = encodeURIComponent(message);
                     
-                    // بناء رابط واتساب النهائي
                     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
                     
-                    // فتح الرابط (سيفتح تطبيق الواتساب مباشرة مع الرسالة المعبأة)
                     window.open(whatsappURL, '_blank');
                 });
             });
-
-            // تبديل قائمة التنقل للجوال (لضمان عمل الزر على الموبايل)
-            document.querySelector('.menu-icon').addEventListener('click', () => {
-                document.querySelector('.nav').classList.toggle('active');
-            });
         });
     </script>
+
 </body>
 </html>
