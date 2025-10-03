@@ -5,123 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>اشتراكات نتفلكس - K4HLD Store Style</title>
     
+    <link rel="stylesheet" href="style.css"> 
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
     <style>
-        /* الألوان الأساسية المستخدمة */
+        /* الألوان الأساسية المستخدمة لصفحة نتفلكس */
         :root {
             --primary-color: #e50914; /* لون نتفلكس الأحمر */
-            --text-color: #000000; /* تغيير لون النص الأساسي للأسود (ليظهر على الخلفية البيضاء للبطاقة) */
-            --background-color: #000000; /* تغيير لون الخلفية للأسود */
-            --card-bg: #FFFFFF; /* تغيير خلفية البطاقة للأبيض */
-            --card-shadow: 0 4px 12px rgba(255, 255, 255, 0.1); /* ظل خفيف باللون الأبيض ليظهر على الخلفية السوداء */
+            --text-color: #000000; 
+            --background-color: #000000; /* خلفية الصفحة السوداء */
+            --card-bg: #FFFFFF; 
+            --header-bg: #1A237E; /* لون الترويسة موحد */
+            --header-text: white;
+            --link-hover: #FFEB3B;
         }
 
-        /* تنسيقات أساسية للجسم واللغة العربية */
+        /* override الخلفية الخاصة بصفحة نتفلكس */
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: var(--background-color); /* تطبيق الخلفية السوداء */
-            padding: 40px 20px;
-            direction: rtl; 
-            text-align: right;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            background-color: var(--background-color); 
+            padding: 0 0 40px 0;
+            color: #ccc; /* لون النص الأساسي على الخلفية السوداء */
         }
         h2 {
-            text-align: center;
             color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 30px;
         }
-        /* لتظهر النصوص العادية على الخلفية السوداء */
         p {
             color: #ccc; 
-            line-height: 1.6;
-        }
-        
-        /* تنسيق الحاوية الرئيسية (Cards Grid) */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 30px;
-            margin-top: 40px;
         }
 
-        /* تنسيق البطاقة الفردية (Service Card) */
+        /* تنسيقات خاصة بالبطاقة لصفحة نتفلكس */
         .service-card {
-            background: var(--card-bg); /* تطبيق الخلفية البيضاء للبطاقة */
-            color: var(--text-color); /* ضمان أن يكون نص البطاقة أسود */
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center; 
-            box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #333; /* إضافة خط داكن ليظهر على الخلفية السوداء */
+            background: var(--card-bg); 
+            color: var(--text-color); 
+            border: 1px solid #333; 
         }
-
-        /* تأثير تحوم الماوس على البطاقة */
-        .service-card:hover {
-            transform: translateY(-5px);
-            /* ظل أكثر وضوحاً عند التحويم */
-            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3); 
-        }
-
-        /* تنسيق الأيقونات */
-        .icon-style {
-            font-size: 3.5rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        /* تنسيق العناوين داخل البطاقة */
-        .service-card h3 {
-            font-size: 1.6rem;
-            color: var(--text-color);
-            margin-bottom: 10px;
-        }
-
-        /* تنسيق السعر */
-        .price-text {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            margin: 20px 0;
-        }
-        
-        /* تنسيق وصف الخدمة داخل البطاقة */
         .service-card p {
-            color: #666; /* لون رمادي للنص داخل البطاقة البيضاء */
+            color: #666; 
         }
-
-        /* تنسيق الأزرار (اطلب الآن) */
+        .price-text {
+            color: var(--primary-color);
+        }
         .btn-primary {
-            display: block; /* تغيير إلى block */
-            background-color: var(--primary-color);
-            color: #fff !important;
-            padding: 12px 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            margin: 10px auto 0 auto;
-            transition: background-color 0.3s ease;
-            width: 80%; /* لتبدو بشكل أفضل */
-            border: none; /* إزالة حدود الزر الافتراضية */
-            cursor: pointer;
+             background-color: var(--primary-color);
         }
-
         .btn-primary:hover {
             background-color: #b2070f;
         }
         
+        /* ---------------------------------- */
+        /* Media Query لتشغيل القائمة على الجوال */
+        /* ---------------------------------- */
+        @media (max-width: 768px) {
+            .nav {
+                display: none; 
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                background: var(--header-bg); 
+                box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+                z-index: 10;
+                text-align: center;
+                padding-bottom: 10px;
+            }
+            .nav.active {
+                display: flex;
+            }
+            .menu-icon {
+                display: block;
+                color: white;
+            }
+            .header .nav ul {
+                flex-direction: column;
+            }
+            .header .nav ul li {
+                padding: 10px 0;
+                border-bottom: 1px solid #333;
+            }
+             .header .nav ul li:last-child {
+                border-bottom: none;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">K4HLD Store.</a>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html#services">خدماتنا</a></li>
+                    <li><a href="index.html#why-us">لماذا نحن</a></li>
+                    <li><a href="index.html#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            <div class="menu-icon"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+
     <section id="products" class="services">
         <div class="container">
-            <h2>اشتراكات نتفلكس (Netflix)</h2>
+            <h2 style="padding-top: 40px;">اشتراكات نتفلكس (Netflix)</h2>
             
             <div class="cards-grid">
 
@@ -194,30 +183,36 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // الآن نستخدم الكلاس purchase-btn ليتطابق مع app.js
+            
+            // ----------------------------------------
+            // الكود المضاف لتشغيل القائمة على الجوال
+            // ----------------------------------------
+            const menuIcon = document.querySelector('.menu-icon');
+            const navMenu = document.querySelector('.nav');
+
+            if (menuIcon && navMenu) {
+                menuIcon.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            // ----------------------------------------
+
+
             const buyButtons = document.querySelectorAll('.purchase-btn'); 
             const whatsappNumber = '212770306095';
 
             buyButtons.forEach(button => {
                 button.addEventListener('click', (event) => {
                     
-                    // الحصول على بيانات المنتج من خصائص البيانات
                     const productName = button.getAttribute('data-item-name');
                     const productPrice = button.getAttribute('data-item-price');
                     
-                    // يتم هنا التوثيق التلقائي عبر app.js 
-                    // (يتم تشغيله تلقائياً بفضل الكلاس purchase-btn ووجود app.js)
-
-                    // إنشاء محتوى رسالة الواتساب
                     const message = `مرحباً، أود طلب الخدمة التالية من متجركم:\n\n*المنتج:* ${productName}\n*السعر:* ${productPrice} درهم مغربي (DH)\n\nالرجاء إخباري بخطوات الدفع لإتمام الطلب. شكراً.`;
                     
-                    // ترميز الرسالة لرابط URL
                     const encodedMessage = encodeURIComponent(message);
                     
-                    // بناء رابط واتساب النهائي
                     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
                     
-                    // فتح الرابط
                     window.open(whatsappURL, '_blank');
                 });
             });
