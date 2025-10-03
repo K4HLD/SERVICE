@@ -9,6 +9,24 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* إخفاء قسم Firebase في الوضع الافتراضي أو عند عدم الحاجة */
+        .firebase-auth-container {
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 8px;
+            max-width: 400px;
+            background: #f8f8f8;
+            border: 1px solid #eee;
+        }
+        #purchase-section {
+            border: 1px dashed #ccc;
+            padding: 15px;
+            margin-top: 10px;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -20,18 +38,56 @@
                     <li><a href="#services">خدماتنا</a></li>
                     <li><a href="#why-us">لماذا نحن</a></li>
                     <li><a href="#contact">اتصل بنا</a></li>
+                    <li><a href="#" id="auth-link">تسجيل/سجل الشراء</a></li>
                 </ul>
             </nav>
             <div class="menu-icon"><i class="fas fa-bars"></i></div>
         </div>
     </header>
 
+    <section id="firebase-auth-section" class="firebase-auth-container" style="display:none;">
+        
+        <div id="auth-ui">
+            <h3>تسجيل جديد</h3>
+            <form id="signup-form">
+                <input type="email" id="signup-email" placeholder="البريد الإلكتروني" required>
+                <input type="password" id="signup-password" placeholder="كلمة المرور (أكثر من 6 أحرف)" required>
+                <button type="submit">إنشاء حساب</button>
+            </form>
+            
+            <hr>
+            
+            <h3>تسجيل الدخول</h3>
+            <form id="login-form">
+                <input type="email" id="login-email" placeholder="البريد الإلكتروني" required>
+                <input type="password" id="login-password" placeholder="كلمة المرور" required>
+                <button type="submit">دخول</button>
+            </form>
+        </div>
+
+        <div id="purchase-section" style="display:none;">
+            <h2>مرحباً بك! <span id="user-email-display" style="color: #007bff;"></span></h2>
+            <button id="logout-btn">تسجيل الخروج</button>
+            <hr>
+
+            <h4>توثيق عملية شراء جديدة:</h4>
+            <input type="text" id="item-name" placeholder="اسم المنتج/الخدمة" required>
+            <input type="number" id="item-price" placeholder="القيمة بالدرهم (مثلاً: 150)" required>
+            <button id="add-purchase-btn">توثيق الشراء</button>
+
+            <hr>
+            <h4>سجل المشتريات الخاص بك:</h4>
+            <ul id="history-list">
+                </ul>
+        </div>
+        <p id="status-message" style="color:red;"></p>
+    </section>
+
     <section class="hero">
         <div class="container hero-content">
             <div class="text-content">
                 <h1>أهلاً بك في متجرنا</h1>
-                <p>ابحث عن جميع الخدمات التي تريدها بأفضل الأسعار
- سرعة - أمان - وثقة.</p>
+                <p>ابحث عن جميع الخدمات التي تريدها بأفضل الأسعار سرعة - أمان - وثقة.</p>
                 <div class="hero-buttons">
                     <a href="#services" class="btn btn-primary">عرض الخدمات</a>
                     <a href="https://wa.me/212770306095" class="btn btn-secondary" target="_blank">
@@ -122,13 +178,6 @@
         </div>
     </section>
     
-    <script>
-        // تبديل قائمة التنقل للجوال
-        document.querySelector('.menu-icon').addEventListener('click', () => {
-            document.querySelector('.nav').classList.toggle('active');
-        });
-    </script>
-
     <div id="welcomePopup" style="display: none;">
         <div class="popup-content">
             <h2>⚠️ إشعار هام</h2>
@@ -148,37 +197,210 @@
         // هذه الدالة تُخفي النافذة المنبثقة
         function closeModal() {
             document.getElementById('importantNotificationModal').classList.remove('active');
-            // إذا أردت أن تظهر النافذة مرة واحدة فقط، يمكنك إضافة كود هنا لحفظ حالة الإغلاق في LocalStorage
         }
     
-        // تشغيل الدالة عند تحميل الصفحة لإظهار النافذة
         window.onload = function() {
-            // ملاحظة: النافذة المنبثقة (Modal) غير معرفة في الكود، قد تحتاج إلى تعديل اسم الـ ID أو إضافة كود CSS/HTML للنافذة المنبثقة.
-            // سأفترض أنك تقصد النافذة المنبثقة التي تظهر في نهاية الصفحة.
-             //showModal(); 
+             // يمكن تفعيل showModal() هنا لاحقاً إذا أردت
         };
     </script>
     
     <a href="https://wa.me/212770306095?text=مرحبا 👋! أريد الحصول على مزيد من المعلومات!" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i>
     </a>
     
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
     <script>
+        // 2. تهيئة Firebase - (تم لصق القيم الخاصة بك هنا)
+        const firebaseConfig = {
+            apiKey: "AIzaSyCg4Pg1oGAZNIvIH-M79bY5aPOn2IRnxtg", 
+            authDomain: "service-store-auth.firebaseapp.com",
+            projectId: "service-store-auth",
+            storageBucket: "service-store-auth.firebasestorage.app",
+            messagingSenderId: "727304309601",
+            appId: "1:727304309601:web:7ededd4f42d39f61b9d320"
+        };
+
+        // تهيئة التطبيق والخدمات
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = app.auth();
+        const db = app.firestore();
+
+        // 3. كود JavaScript للوظائف
         document.addEventListener('DOMContentLoaded', () => {
-            // كود مخصص لزر "عرض المنتجات" لخدمات التواصل الاجتماعي
+            // العناصر (Elements)
+            const authSection = document.getElementById('firebase-auth-section');
+            const authLink = document.getElementById('auth-link');
+            const authUI = document.getElementById('auth-ui');
+            const purchaseSection = document.getElementById('purchase-section');
+            const userEmailDisplay = document.getElementById('user-email-display');
+            const historyList = document.getElementById('history-list');
+            const statusMessage = document.getElementById('status-message');
+            
+            // نماذج (Forms)
+            const signupForm = document.getElementById('signup-form');
+            const loginForm = document.getElementById('login-form');
+            const logoutBtn = document.getElementById('logout-btn');
+            const addPurchaseBtn = document.getElementById('add-purchase-btn');
+            const itemNameInput = document.getElementById('item-name');
+            const itemPriceInput = document.getElementById('item-price');
+
+            // وظيفة عرض/إخفاء قسم Firebase
+            authLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                // تبديل حالة العرض (إظهار/إخفاء)
+                authSection.style.display = authSection.style.display === 'none' ? 'block' : 'none';
+            });
+            
+            // =======================================================
+            // وظيفة (1): التسجيل في Firebase
+            // =======================================================
+            signupForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                statusMessage.textContent = '';
+                
+                const email = signupForm['signup-email'].value;
+                const password = signupForm['signup-password'].value;
+                
+                try {
+                    await auth.createUserWithEmailAndPassword(email, password);
+                    statusMessage.textContent = 'تم إنشاء الحساب بنجاح! سيتم تسجيل الدخول تلقائياً.';
+                } catch (error) {
+                    statusMessage.textContent = `خطأ في التسجيل: ${error.message}`;
+                    console.error(error);
+                }
+            });
+
+            // =======================================================
+            // وظيفة (2): تسجيل الدخول في Firebase
+            // =======================================================
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                statusMessage.textContent = '';
+                
+                const email = loginForm['login-email'].value;
+                const password = loginForm['login-password'].value;
+                
+                try {
+                    await auth.signInWithEmailAndPassword(email, password);
+                    statusMessage.textContent = 'تم تسجيل الدخول بنجاح!';
+                } catch (error) {
+                    statusMessage.textContent = `خطأ في الدخول: ${error.message}`;
+                    console.error(error);
+                }
+            });
+            
+            // =======================================================
+            // وظيفة (3): تسجيل الخروج
+            // =======================================================
+            logoutBtn.addEventListener('click', async () => {
+                await auth.signOut();
+                statusMessage.textContent = 'تم تسجيل الخروج بنجاح.';
+            });
+
+            // =======================================================
+            // وظيفة (4): حفظ سجل الشراء في Firestore
+            // =======================================================
+            addPurchaseBtn.addEventListener('click', async () => {
+                const user = auth.currentUser;
+                if (!user) {
+                    statusMessage.textContent = 'يجب تسجيل الدخول لإضافة سجل شراء.';
+                    return;
+                }
+
+                const itemName = itemNameInput.value.trim();
+                const itemPrice = parseFloat(itemPriceInput.value);
+
+                if (!itemName || isNaN(itemPrice) || itemPrice <= 0) {
+                    statusMessage.textContent = 'يرجى إدخال اسم المنتج وسعر صحيح.';
+                    return;
+                }
+
+                try {
+                    // إضافة بيانات الشراء إلى مجموعة /users/{UID}/purchases
+                    await db.collection('users').doc(user.uid)
+                            .collection('purchases').add({
+                        itemName: itemName,
+                        price: itemPrice,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp() // وقت الخادم
+                    });
+
+                    statusMessage.textContent = `تم توثيق شراء "${itemName}" بنجاح!`;
+                    itemNameInput.value = '';
+                    itemPriceInput.value = '';
+                } catch (error) {
+                    statusMessage.textContent = `خطأ في الحفظ: ${error.message}`;
+                    console.error('Error adding document: ', error);
+                }
+            });
+
+            // =======================================================
+            // وظيفة (5): جلب سجل الشراء وعرض الواجهة حسب حالة المستخدم
+            // =======================================================
+            
+            // وظيفة جلب وعرض السجلات
+            const loadPurchaseHistory = (user) => {
+                if (!user) return;
+                
+                historyList.innerHTML = '<li>جاري تحميل السجلات...</li>';
+                
+                // الاستماع للتغييرات في قاعدة البيانات (في الوقت الفعلي)
+                db.collection('users').doc(user.uid).collection('purchases')
+                    .orderBy('timestamp', 'desc') // عرض الأحدث أولاً
+                    .onSnapshot((snapshot) => {
+                        historyList.innerHTML = ''; // مسح القائمة القديمة
+                        
+                        if (snapshot.empty) {
+                            historyList.innerHTML = '<li>لا توجد سجلات شراء حتى الآن.</li>';
+                            return;
+                        }
+
+                        snapshot.forEach((doc) => {
+                            const data = doc.data();
+                            const li = document.createElement('li');
+                            const date = data.timestamp ? data.timestamp.toDate().toLocaleDateString('ar-MA') : 'غير متوفر';
+                            
+                            li.textContent = `
+                                [${date}] - المنتج: ${data.itemName} - القيمة: ${data.price} درهم
+                            `;
+                            historyList.appendChild(li);
+                        });
+                    }, (error) => {
+                        console.error('Error listening to history: ', error);
+                        historyList.innerHTML = '<li>خطأ في جلب السجلات.</li>';
+                    });
+            };
+
+
+            // وظيفة تحديث الواجهة عند تغيير حالة المصادقة
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    // حالة: تسجيل الدخول (Logged In)
+                    userEmailDisplay.textContent = user.email;
+                    authUI.style.display = 'none';
+                    purchaseSection.style.display = 'block';
+                    loadPurchaseHistory(user); // جلب السجل
+                } else {
+                    // حالة: تسجيل الخروج (Logged Out)
+                    userEmailDisplay.textContent = '';
+                    historyList.innerHTML = '<li>يرجى تسجيل الدخول لعرض السجل.</li>';
+                    authUI.style.display = 'block';
+                    purchaseSection.style.display = 'none';
+                }
+            });
+            
+            // كود مخصص لزر "عرض المنتجات" لخدمات التواصل الاجتماعي (تنبيه "سيتوفر قريباً")
             const smmButton = document.getElementById('smm-soon-btn');
     
             if (smmButton) {
                 smmButton.addEventListener('click', (event) => {
-                    // منع الانتقال إلى الرابط (smm.html)
                     event.preventDefault(); 
-                    
-                    // عرض رسالة "سيتوفر قريباً"
                     alert("سيتوفر قريباً");
                 });
             }
         });
     </script>
-
 
 </body>
 </html>
