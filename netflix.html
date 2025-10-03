@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اشتراكات نتفلكس - K4HLD Store Style</title>
+    <title>اشتراكات نتفلكس - K4HLD Store</title>
     
     <link rel="stylesheet" href="style.css"> 
     
@@ -11,83 +11,52 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
     <style>
-        /* الألوان الأساسية المستخدمة لصفحة نتفلكس */
+        /* المتغيرات والتخصيصات الخاصة بصفحة نتفلكس */
         :root {
-            --primary-color: #e50914; /* لون نتفلكس الأحمر */
-            --text-color: #000000; 
-            --background-color: #000000; /* خلفية الصفحة السوداء */
-            --card-bg: #FFFFFF; 
-            --header-bg: #1A237E; /* لون الترويسة موحد */
-            --header-text: white;
-            --link-hover: #FFEB3B;
+            --product-primary-color: #e50914; /* أحمر نتفلكس */
+            --background-page: #000000; /* خلفية الصفحة السوداء كما طلبت */
+            --card-bg-color: #FFFFFF; /* خلفية البطاقة بيضاء */
         }
 
-        /* override الخلفية الخاصة بصفحة نتفلكس */
+        /* override الخلفية واللون للصفحة */
         body {
-            background-color: var(--background-color); 
-            padding: 0 0 40px 0;
-            color: #ccc; /* لون النص الأساسي على الخلفية السوداء */
-        }
-        h2 {
-            color: var(--primary-color);
-        }
-        p {
+            background-color: var(--background-page); 
+            /* لضمان ظهور النصوص العادية على الخلفية السوداء */
             color: #ccc; 
         }
-
-        /* تنسيقات خاصة بالبطاقة لصفحة نتفلكس */
+        
+        /* override ألوان العناصر داخل البطاقات البيضاء */
         .service-card {
-            background: var(--card-bg); 
-            color: var(--text-color); 
-            border: 1px solid #333; 
+            background: var(--card-bg-color); 
+            color: #000000; /* نص البطاقة أسود */
         }
         .service-card p {
-            color: #666; 
+            color: #666; /* لون رمادي للنص داخل البطاقة */
+        }
+
+        /* override الأنماط العامة للعناصر الرئيسية */
+        h2 {
+            color: var(--product-primary-color);
         }
         .price-text {
-            color: var(--primary-color);
+            color: var(--product-primary-color);
         }
         .btn-primary {
-             background-color: var(--primary-color);
+            background-color: var(--product-primary-color);
         }
         .btn-primary:hover {
             background-color: #b2070f;
         }
-        
-        /* ---------------------------------- */
-        /* Media Query لتشغيل القائمة على الجوال */
-        /* ---------------------------------- */
-        @media (max-width: 768px) {
-            .nav {
-                display: none; 
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                right: 0;
-                width: 100%;
-                background: var(--header-bg); 
-                box-shadow: 0 4px 6px rgba(0,0,0,0.5);
-                z-index: 10;
-                text-align: center;
-                padding-bottom: 10px;
-            }
-            .nav.active {
-                display: flex;
-            }
-            .menu-icon {
-                display: block;
-                color: white;
-            }
-            .header .nav ul {
-                flex-direction: column;
-            }
-            .header .nav ul li {
-                padding: 10px 0;
-                border-bottom: 1px solid #333;
-            }
-             .header .nav ul li:last-child {
-                border-bottom: none;
-            }
+        .icon-style {
+            color: var(--product-primary-color);
+        }
+
+        /* توحيد فئة الرابط إلى زر */
+        .card-link {
+            /* للتخلص من أي أنماط افتراضية لرابط الـ<a> */
+            display: block; 
+            width: 80% !important;
+            margin: 10px auto 0 auto !important;
         }
     </style>
 </head>
@@ -108,9 +77,9 @@
     </header>
 
 
-    <section id="products" class="services">
+    <section id="products" class="services" style="padding: 80px 0;">
         <div class="container">
-            <h2 style="padding-top: 40px;">اشتراكات نتفلكس (Netflix)</h2>
+            <h2>اشتراكات نتفلكس (Netflix)</h2>
             
             <div class="cards-grid">
 
@@ -178,15 +147,12 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-    
     <script src="app.js"></script> 
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            // ----------------------------------------
-            // الكود المضاف لتشغيل القائمة على الجوال
-            // ----------------------------------------
+            // 1. تشغيل القائمة على الجوال
             const menuIcon = document.querySelector('.menu-icon');
             const navMenu = document.querySelector('.nav');
 
@@ -195,9 +161,8 @@
                     navMenu.classList.toggle('active');
                 });
             }
-            // ----------------------------------------
 
-
+            // 2. منطق طلب الواتساب (باستخدام بيانات data-item-name/price)
             const buyButtons = document.querySelectorAll('.purchase-btn'); 
             const whatsappNumber = '212770306095';
 
@@ -207,6 +172,7 @@
                     const productName = button.getAttribute('data-item-name');
                     const productPrice = button.getAttribute('data-item-price');
                     
+                    // استخدام رسالة الواتساب الموحدة
                     const message = `مرحباً، أود طلب الخدمة التالية من متجركم:\n\n*المنتج:* ${productName}\n*السعر:* ${productPrice} درهم مغربي (DH)\n\nالرجاء إخباري بخطوات الدفع لإتمام الطلب. شكراً.`;
                     
                     const encodedMessage = encodeURIComponent(message);
