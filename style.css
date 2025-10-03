@@ -1,43 +1,72 @@
-/* تحديد الخط الأساسي واتجاه الكتابة */
-body {
-    font-family: 'Cairo', sans-serif;
-    direction: rtl; /* اتجاه الكتابة من اليمين لليسار (RTL) */
-    text-align: right;
-    margin: 0;
-    padding: 0;
-    background-color: #000000; /* خلفية داكنة للموقع */
-    color: #333;
-    /* ================================================= */
-    /* التعديل الرئيسي لحل مشكلة الجانب الأبيض */
-    overflow-x: hidden; 
-    /* ================================================= */
-}
-
-/* ================================================= */
-/* القاعدة العامة لضمان عدم تجاوز العرض */
-/* ================================================= */
-* {
-    /* يضمن أن يتم حساب الحدود (padding و border) ضمن العرض الإجمالي */
-    box-sizing: border-box; 
-}
-/* ================================================= */
+/* ========================================================= */
+/* 1. القواعد العامة والمتغيرات الأساسية (Globals & Variables) */
+/* ========================================================= */
 
 /* المتغيرات الأساسية للألوان */
 :root {
-    --primary-color: #1A237E; /* الأزرق الغامق الجديد */
-    --secondary-color: #f8f8f8; /* لون ثانوي فاتح */
-    --text-color: #333;
+    --primary-color: #1A237E; /* الأزرق الغامق (الرئيسي) */
+    --secondary-color: #f8f8f8; /* لون ثانوي فاتح للخلفيات */
+    --text-color: #333; /* لون النص الأساسي */
     --white-color: #ffffff;
+    --black-color: #000000;
     --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --link-hover-color: #536DFE; /* لون فاتح للتأثير */
+}
+
+/* القاعدة العامة لضمان عدم تجاوز العرض وتصحيح الصندوق */
+* {
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+}
+
+/* تحديد الخط الأساسي واتجاه الكتابة وتصحيح العرض */
+body {
+    font-family: 'Cairo', sans-serif;
+    direction: rtl; 
+    text-align: right;
+    background-color: var(--white-color); /* تغيير الخلفية للابيض ليتناسق مع الهيدر */
+    color: var(--text-color);
+    overflow-x: hidden; /* يحل مشكلة ظهور الجانب الأبيض عند التمرير الأفقي */
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
+    width: 100%;
 }
 
-/* الأزرار والتعديل على اللون */
+/* الأقسام العامة */
+section {
+    padding: 60px 0;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    position: relative;
+    font-weight: 700;
+}
+
+section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* --------------------------------------------------------- */
+
+/* ========================================================= */
+/* 2. الأزرار (Buttons) */
+/* ========================================================= */
+
 .btn {
     display: inline-block;
     padding: 12px 25px;
@@ -51,27 +80,32 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--primary-color); /* تطبيق اللون الأزرق الغامق */
-    color: var(--white-color);
+    background-color: var(--primary-color);
+    color: var(--white-color) !important; /* ضمان اللون الأبيض للنص */
 }
 
 .btn-primary:hover {
-    background-color: #111A5B; /* درجة أغمق عند المرور */
+    background-color: #111A5B; 
     transform: translateY(-2px);
 }
 
 .btn-secondary {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
+    background-color: var(--white-color);
+    color: var(--primary-color) !important;
     border: 1px solid var(--primary-color);
 }
 
 .btn-secondary:hover {
-    background-color: #e0e0e0;
+    background-color: var(--secondary-color);
     transform: translateY(-2px);
 }
 
-/* الهيدر وشريط التنقل */
+/* --------------------------------------------------------- */
+
+/* ========================================================= */
+/* 3. الهيدر وشريط التنقل (Header & Navigation) */
+/* ========================================================= */
+
 .header {
     background-color: var(--white-color);
     box-shadow: var(--shadow-light);
@@ -111,17 +145,22 @@ body {
 }
 
 .nav ul li a:hover {
-    color: var(--primary-color); /* تطبيق اللون الأزرق الغامق */
+    color: var(--primary-color);
 }
 
 .menu-icon {
-    display: none;
+    display: none; /* يتم إظهاره فقط في وضع الجوال */
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--primary-color);
 }
 
-/* قسم الترحيب (Hero) */
+/* --------------------------------------------------------- */
+
+/* ========================================================= */
+/* 4. قسم الترحيب (Hero Section) */
+/* ========================================================= */
+
 .hero {
     background-color: var(--primary-color);
     color: var(--white-color);
@@ -142,46 +181,25 @@ body {
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 30px;
+    color: var(--secondary-color); /* تفتيح لون النص ليظهر على الخلفية الداكنة */
 }
 
 .hero-buttons a {
     margin-left: 15px;
-    margin-bottom: 15px;
-}
-
-.hero-buttons .btn-secondary {
-    background-color: var(--black-color);
 }
 
 .image-content img {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* ظل داكن ليتناسب مع الخلفية الزرقاء */
 }
 
-/* الأقسام العامة */
-section {
-    padding: 60px 0;
-}
+/* --------------------------------------------------------- */
 
-section h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: var(--primary-color); /* تطبيق اللون الأزرق الغامق */
-    margin-bottom: 40px;
-    position: relative;
-}
-
-section h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px;
-    background-color: var(--primary-color);
-    margin: 10px auto 0;
-    border-radius: 2px;
-}
+/* ========================================================= */
+/* 5. بطاقات الخدمات والمميزات (Cards Grid) */
+/* ========================================================= */
 
 .cards-grid {
     display: grid;
@@ -189,7 +207,7 @@ section h2::after {
     gap: 30px;
 }
 
-/* بطاقات الخدمات (Service Card) */
+/* تنسيق بطاقة الخدمة */
 .service-card {
     background-color: var(--white-color);
     padding: 30px;
@@ -197,6 +215,9 @@ section h2::after {
     box-shadow: var(--shadow-light);
     text-align: center;
     transition: transform 0.3s;
+    display: flex; /* لضمان ترتيب المحتوى */
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .service-card:hover {
@@ -208,7 +229,7 @@ section h2::after {
     width: 100px;
     height: 100px;
     object-fit: contain;
-    margin-bottom: 15px;
+    margin: 0 auto 15px auto; /* توسيط الصورة */
     border-radius: 50%;
 }
 
@@ -226,7 +247,7 @@ section h2::after {
     margin-top: 15px;
 }
 
-/* قسم المميزات (Features) */
+/* تنسيق بطاقة المميزات (Features) */
 .features .feature-card {
     background-color: var(--white-color);
     padding: 30px;
@@ -241,7 +262,12 @@ section h2::after {
     margin-bottom: 15px;
 }
 
-/* قسم طرق الدفع (Payments) */
+/* --------------------------------------------------------- */
+
+/* ========================================================= */
+/* 6. قسم طرق الدفع (Payments) */
+/* ========================================================= */
+
 .payments {
     background-color: var(--secondary-color);
 }
@@ -263,37 +289,33 @@ section h2::after {
     box-shadow: var(--shadow-light);
 }
 
-/* قسم آراء العملاء (Reviews) */
+/* --------------------------------------------------------- */
+
+/* ========================================================= */
+/* 7. قسم آراء العملاء (Reviews Carousel) */
+/* ========================================================= */
+
 .reviews {
     background-color: var(--white-color);
 }
 
-/* ================================================= */
-/* تعديل مهم: تم تغيير خصائص .review-carousel هنا لتناسب الهاتف */
 .review-carousel {
     display: flex;
     gap: 20px;
     padding-bottom: 20px;
-    /* إزالة خاصية justify-content: center; هنا لتفعيل التمرير الأفقي بشكل صحيح */
-    
-    /* خصائص التمرير الأفقي */
     overflow-x: auto; 
-    -webkit-overflow-scrolling: touch; /* لتحسين التمرير على iOS */
-    /* إخفاء شريط التمرير الافتراضي في بعض المتصفحات */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
+    -webkit-overflow-scrolling: touch; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none;  
 }
 .review-carousel::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none; 
 }
-/* ================================================= */
 
 .review-card {
-    /* تم تغيير min-width لضمان عدم تجاوز العرض وإتاحة مساحة أكبر للتمرير على الهاتف */
-    min-width: 85vw; /* تأخذ 85% من عرض الشاشة (viewport width) */
+    min-width: 85vw; 
     max-width: 350px;
-    flex-shrink: 0; /* تضمن عدم انكماش البطاقة */
-    /* ---------------------------------------------------------------------- */
+    flex-shrink: 0; 
     padding: 25px;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -326,10 +348,15 @@ section h2::after {
     color: var(--primary-color);
 }
 
-/* قسم الاتصال (Contact) */
+/* --------------------------------------------------------- */
+
+/* ========================================================= */
+/* 8. التذييل والاتصال (Footer & Contact) */
+/* ========================================================= */
+
 .contact {
     text-align: center;
-    background-color: #f4f7f6;
+    background-color: var(--secondary-color);
 }
 
 .contact-form {
@@ -361,7 +388,6 @@ section h2::after {
     width: auto;
 }
 
-/* التذييل (Footer) */
 .footer {
     background-color: var(--primary-color);
     color: var(--white-color);
@@ -383,15 +409,90 @@ section h2::after {
 }
 
 .social-links a:hover {
-    color: #a8b0e8; /* لون فاتح عند المرور */
+    color: #a8b0e8; 
 }
 
+/* --------------------------------------------------------- */
+
 /* ========================================================= */
-/* التجاوب مع الشاشات الصغيرة (Media Queries) */
+/* 9. العناصر العائمة والمنبثقة (Float & Popups) */
 /* ========================================================= */
 
+/* زر واتساب العائم */
+.whatsapp-float {
+    position: fixed; 
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    left: 40px; 
+    background-color: #25d366; 
+    color: #FFF;
+    border-radius: 50px; 
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999; 
+    z-index: 1000; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none; 
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+}
+
+/* النافذة المنبثقة (Popup) - للاستخدام مع كود JavaScript */
+#welcomePopup {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    z-index: 2000; /* أعلى من كل شيء */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: var(--white-color);
+    color: var(--text-color);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s; 
+}
+
+.popup-content h2 {
+    color: var(--primary-color); 
+    margin-bottom: 15px;
+}
+.popup-content button {
+    background-color: var(--primary-color);
+}
+.popup-content button:hover {
+    background-color: #111A5B;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* --------------------------------------------------------- */
+
+/* ========================================================= */
+/* 10. التجاوب مع الشاشات الصغيرة (Media Queries) */
+/* ========================================================= */
+
+/* الأجهزة اللوحية (Tablet - أقل من 992px) */
 @media (max-width: 992px) {
-    /* تغيير الترتيب العمودي لقسم Hero على الأجهزة اللوحية */
+    /* تغيير الترتيب العمودي لقسم Hero */
     .hero-content {
         flex-direction: column;
         text-align: center;
@@ -407,9 +508,10 @@ section h2::after {
     }
 }
 
+/* الهواتف الذكية (Mobile - أقل من 768px) */
 @media (max-width: 768px) {
-    /* ---------------------------------------------------- */
-    /* تعديلات الهيدر وشريط التنقل (تم الإبقاء على الكود الأصلي لـ GitHub) */
+    
+    /* 1. قائمة التنقل (Navigation) - لجعل القائمة تعمل على الجوال */
     .header .nav {
         display: none;
         flex-direction: column;
@@ -431,55 +533,42 @@ section h2::after {
         flex-direction: column;
         text-align: center;
     }
-
-    .nav ul li a {
-        color: var(--text-color);
-    }
-
+    
     .menu-icon {
-        display: block;
+        display: block; /* إظهار زر القائمة */
     }
 
-    /* ---------------------------------------------------- */
-    /* *** الإضافة/التعديل لضمان عدم التبعثر على الهاتف *** */
-    /* ---------------------------------------------------- */
-
-    /* 1. قسم الترحيب (Hero) - ضمان الترتيب العمودي وتوسيط الأزرار */
+    /* 2. قسم الترحيب (Hero) - ضمان الترتيب العمودي وتوسيط الأزرار */
     .hero-content {
-        flex-direction: column;
-        text-align: center;
         gap: 20px;
     }
 
     .hero-buttons {
         justify-content: center;
         display: flex; 
-        flex-wrap: wrap; /* تسمح للأزرار بالنزول لسطر جديد إذا لم تتسع */
+        flex-wrap: wrap; 
     }
     
-    /* 2. التذييل (Footer) - ترتيب عمودي */
+    /* 3. التذييل (Footer) - ترتيب عمودي */
     .footer .container {
         flex-direction: column;
         gap: 15px;
     }
-
-    .footer p {
-        margin: 0;
-    }
     
-    /* 3. تحويل شبكات البطاقات (الخدمات والمميزات) إلى عرض عمودي */
+    /* 4. تحويل شبكات البطاقات (الخدمات والمميزات) إلى عرض عمودي */
     .cards-grid {
         grid-template-columns: 1fr;
     }
 }
 
+/* الهواتف الأصغر (Smaller Mobile - أقل من 480px) */
 @media (max-width: 480px) {
     .hero-content h1 {
         font-size: 2.5rem;
     }
 
+    /* الأزرار بشكل عمودي */
     .hero-buttons {
-        display: flex;
         flex-direction: column;
         gap: 10px;
     }
@@ -488,91 +577,4 @@ section h2::after {
         margin-left: 0;
         width: 100%;
     }
-    }
-/* تنسيق النافذة المنبثقة - يجب وضعه في ملف style.css أو ما يعادله */
-#welcomePopup {
-    position: fixed; /* لتثبيته في الشاشة */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* خلفية سوداء معتمة */
-    z-index: 1000; /* للتأكد من ظهوره فوق كل عناصر الصفحة */
-    display: flex; /* لمركزة المحتوى */
-    justify-content: center;
-    align-items: center;
-}
-
-.popup-content {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    animation: fadeIn 0.5s; /* إضافة تأثير بسيط للظهور */
-}
-
-.popup-content h2 {
-    color: #0056b3; /* لون العنوان */
-    margin-bottom: 15px;
-}
-
-.popup-content button {
-    margin-top: 20px;
-    padding: 10px 25px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-.popup-content button:hover {
-    background-color: #0056b3;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-.whatsapp-float {
-    /* تحديد موقعه ليكون ثابتاً على الشاشة */
-    position: fixed; 
-    /* وضعه في الأسفل واليسار (أو اليمين حسب لغة موقعك) */
-    width: 60px;
-    height: 60px;
-    bottom: 40px;
-    left: 40px; /* إذا كان الموقع من اليمين لليسار (RTL) مثل العربية، قد تفضّل left */
-    
-    /* تصميم الزر */
-    background-color: #25d366; /* لون واتساب الأخضر */
-    color: #FFF;
-    border-radius: 50px; /* لجعله دائريًا */
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 2px 2px 3px #999; /* لإضافة ظل لطيف */
-    z-index: 1000; /* للتأكد من أنه يظهر فوق جميع العناصر الأخرى */
-
-    /* توسيط النص/الأيقونة */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none; /* إزالة خطوط الروابط */
-}
-
-/* إضافة تأثير عند مرور الماوس (اختياري) */
-.whatsapp-float:hover {
-    background-color: #128C7E;
-}
-/* يستهدف عنوان H2 داخل قسم المميزات (#why-us أو .features) */
-.features h2 {
-    color: #3498db; /* لون أزرق فاتح وواضح */
-    font-weight: 700; /* لجعل الخط سميكًا وبارزًا */
-    /* يمكنك إضافة المزيد من الوضوح بزيادة الحجم قليلاً */
-    /* font-size: 2.2rem; */
 }
