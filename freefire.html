@@ -219,7 +219,19 @@
                 });
             });
         });
-    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuIcon = document.querySelector('.menu-icon');
+        const navMenu = document.querySelector('.nav');
+
+        if (menuIcon && navMenu) {
+            menuIcon.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+    });
+</script>
+
 
 </body>
 </html>
