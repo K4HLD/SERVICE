@@ -172,7 +172,7 @@
                     const productName = button.getAttribute('data-item-name');
                     const productPrice = button.getAttribute('data-item-price');
                     
-                    // استخدام رسالة الواتساب الموحدة
+                    // محتوى الرسالة الذي يحتوي على الطلبية
                     const message = `مرحباً، أود طلب الخدمة التالية من متجركم:\n\n*المنتج:* ${productName}\n*السعر:* ${productPrice} درهم مغربي (DH)\n\nالرجاء إخباري بخطوات الدفع لإتمام الطلب. شكراً.`;
                     
                     const encodedMessage = encodeURIComponent(message);
@@ -183,18 +183,7 @@
                 });
             });
         });
-   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const menuIcon = document.querySelector('.menu-icon');
-        const navMenu = document.querySelector('.nav');
-
-        if (menuIcon && navMenu) {
-            menuIcon.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-            });
-        }
-    });
-</script>
+    </script>
 
 
 </body>
