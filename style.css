@@ -140,10 +140,23 @@ a {
 }
 
 .service-card img {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
     margin-bottom: 20px;
+    
+    /* ----------------------------------
+       >> التعديل لتحسين أناقة صورة العملات 
+       ---------------------------------- */
+    
+    /* 1. إضافة ظل خفيف للعمق */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    
+    /* 2. إضافة حواف دائرية خفيفة لتبدو كأنها أيقونة */
+    border-radius: 5px; 
+    
+    /* 3. التأكد من تطبيق الانتقال على الصورة لدمجها مع تأثير التحليق */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease; 
 }
 
 .service-card h3 {
