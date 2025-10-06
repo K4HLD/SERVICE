@@ -135,7 +135,7 @@ a {
 
 .icon-style {
     font-size: 3.5rem;
-    color: var(--product-primary-color); /* يُتجاوز في الصفحات الفردية */
+    color: var(--product-primary-color); 
     margin-bottom: 20px;
 }
 
@@ -144,18 +144,8 @@ a {
     height: 120px;
     object-fit: contain;
     margin-bottom: 20px;
-    
-    /* ----------------------------------
-       >> التعديل لتحسين أناقة صورة العملات 
-       ---------------------------------- */
-    
-    /* 1. إضافة ظل خفيف للعمق */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
-    
-    /* 2. إضافة حواف دائرية خفيفة لتبدو كأنها أيقونة */
     border-radius: 5px; 
-    
-    /* 3. التأكد من تطبيق الانتقال على الصورة لدمجها مع تأثير التحليق */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease; 
 }
 
@@ -173,26 +163,51 @@ a {
 .price-text {
     font-size: 2.2rem;
     font-weight: 800;
-    color: var(--product-primary-color); /* يُتجاوز في الصفحات الفردية */
+    color: var(--product-primary-color); 
     margin: 20px 0;
 }
 
-.btn-primary {
-    display: block;
-    background-color: var(--buy-button-color);
-    color: #fff !important;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 700;
-    transition: background-color 0.3s;
+/* ----------------------------------------
+   >> الأنماط الخاصة بأزرار الدفع
+   ---------------------------------------- */
+
+/* 1. نمط تجميع الأزرار: يجعل الأزرار عمودية (فوق بعضها) */
+.card-buttons-group {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; /* مسافة بين الزرين */
     width: 100%;
-    margin-top: auto; /* يدفعه للأسفل */
+    margin-top: auto; 
 }
 
-.btn-primary:hover {
-    background-color: #388e3c; /* أخضر أغمق عند التحويم */
+/* 2. نمط الأزرار العامة: يجعل الروابط تبدو كأزرار متمددة */
+.btn-action {
+    display: block; /* هام جداً: لجعل الرابط يملأ عرض الأب */
+    text-align: center;
+    font-weight: 700;
+    padding: 12px 25px;
+    border-radius: 8px;
+    width: 100%;
+    transition: background-color 0.3s;
+    color: white !important; /* لإجبار لون النص على البياض */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 3. نمط زر الدفع بالبطاقة (PayPal) */
+.btn-credit {
+    background-color: #007bff; /* الأزرق الاحترافي */
+}
+.btn-credit:hover {
+    background-color: #0056b3;
+}
+
+/* 4. نمط زر الواتساب */
+.btn-whatsapp {
+    background-color: #4CAF50; /* الأخضر المميز للواتساب */
+}
+.btn-whatsapp:hover {
+    background-color: #388e3c;
 }
 
 /* --------------------------------------
@@ -256,7 +271,7 @@ a {
    -------------------------------------- */
 @media (max-width: 768px) {
     
-    /* ***** الإصلاح: إظهار أيقونة القائمة على الجوال ***** */
+    /* الإصلاح: إظهار أيقونة القائمة على الجوال */
     .menu-icon {
         display: block; 
     }
@@ -268,13 +283,13 @@ a {
         width: 100%;
         background-color: var(--header-bg);
         position: absolute;
-        top: 60px; /* تحت الترويسة */
+        top: 60px; 
         left: 0;
         box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
     }
 
     .nav.active {
-        display: flex; /* تظهر القائمة عند النقر */
+        display: flex; 
     }
 
     .nav ul {
