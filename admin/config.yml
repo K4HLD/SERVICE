@@ -3,17 +3,13 @@ backend:
   repo: "k4hld/SERVICE"
   branch: main
   auth_scope: "repo"
-  open_authoring: true # هذا السطر يفعل المصادقة المجانية المباشرة
+  open_authoring: true 
 
-local_backend: true 
 publish_mode: editorial_workflow 
 
 media_folder: "images/accounts_uploads"
 public_folder: "/images/accounts_uploads"
 
-# -----------------
-# إعداد الحقول لإدارة الحسابات للبيع
-# -----------------
 collections:
   - name: "accounts_for_sale" 
     label: "إدارة الحسابات للبيع"
