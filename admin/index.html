@@ -12,7 +12,10 @@
     </script>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
-      CMS.init(); 
-    </script>
-</body>
-</html>
+  CMS.init({
+    auth: {
+      provider: 'github',
+      scope: 'repo',
+    },
+  });
+</script>
