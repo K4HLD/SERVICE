@@ -20,7 +20,7 @@ async function loadAccounts() {
         const response = await fetch(`${DATA_FOLDER}sample-account.json`);
         
         if (!response.ok) {
-             container.innerHTML = '<p style="color: #ccc; text-align: center;">لا توجد حسابات معروضة للبيع حالياً. قم بإضافتها من لوحة الإدارة.</p>';
+             container.innerHTML = '<p style="color: #ccc; text-align: center;"> لا توجد حسابات معروضة للبيع حالياً </p>';
              return;
         }
 
