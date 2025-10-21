@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: "K4HLD/k4hld-store" 
+  repo: "k4hld/SERVICE"
   branch: main 
  
   branch: main # تأكد من أن هذا هو اسم الفرع الرئيسي لديك (قد يكون master)
