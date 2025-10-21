@@ -2,6 +2,7 @@ backend:
   name: github
   repo: "k4hld/SERVICE"
   branch: main
+  site_url: "https://www.k4hld.store"
   auth_scope: "repo"
   open_authoring: true 
 
