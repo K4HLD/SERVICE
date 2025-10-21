@@ -22,4 +22,4 @@ collections:
       - {label: "وصف موجز", name: "description", widget: "text"}
       - {label: "السعر", name: "price", widget: "number", valueType: "float", required: true}
       - {label: "صورة المنتج", name: "image", widget: "image", required: true}
-      - {label: "رسالة واتساب (بداية الرسالة)", name: "whatsapp_msg", widget: "string", required: true}
+      - {label: "رسالة واتساب  (بداية الرسالة)", name: "whatsapp_msg", widget: "string", required: true}
