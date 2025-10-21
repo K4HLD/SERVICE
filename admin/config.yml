@@ -1,13 +1,15 @@
 backend:
   name: github
   repo: "k4hld/SERVICE"
-  branch: main 
- 
+  branch: main
+  auth_scope: "repo"
+  open_authoring: true # هذا السطر يفعل المصادقة المجانية المباشرة
+
 local_backend: true 
 publish_mode: editorial_workflow 
 
-media_folder: "images/accounts_uploads"  # مسار حفظ صور الحسابات الجديدة
-public_folder: "/images/accounts_uploads" # المسار العام للوصول للصور
+media_folder: "images/accounts_uploads"
+public_folder: "/images/accounts_uploads"
 
 # -----------------
 # إعداد الحقول لإدارة الحسابات للبيع
@@ -15,11 +17,10 @@ public_folder: "/images/accounts_uploads" # المسار العام للوصول
 collections:
   - name: "accounts_for_sale" 
     label: "إدارة الحسابات للبيع"
-    # هذا المجلد سيحتوي على ملفات Markdown (الحسابات)
     folder: "_data/accounts" 
     create: true 
-    slug: "{{slug}}" # اسم الملف سيكون من عنوان الحساب
-    extension: "json" # سنستخدم ملفات JSON لسهولة القراءة بـ JavaScript
+    slug: "{{slug}}"
+    extension: "json" 
     fields: 
       - {label: "اسم الحساب", name: "title", widget: "string", required: true}
       - {label: "وصف موجز", name: "description", widget: "text"}
