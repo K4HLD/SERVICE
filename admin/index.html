@@ -7,6 +7,12 @@
     <link href="config.yml" type="text/yaml" rel="cms-config-default" /> 
 </head>
 <body>
+    <script>
+      window.CMS_MANUAL_INIT = true; 
+    </script>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      CMS.init(); 
+    </script>
 </body>
 </html>
