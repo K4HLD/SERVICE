@@ -3,8 +3,6 @@ backend:
   repo: "k4hld/SERVICE"
   branch: main 
  
-  branch: main # تأكد من أن هذا هو اسم الفرع الرئيسي لديك (قد يكون master)
-
 local_backend: true 
 publish_mode: editorial_workflow 
 
