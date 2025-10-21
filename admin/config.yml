@@ -1,0 +1,29 @@
+backend:
+  name: github
+  # 💡 هام: استبدل [اسم المستخدم] و [اسم المستودع] ببياناتك الحقيقية من GitHub!
+  repo: "[اسم المستخدم الخاص بك على GitHub]/[اسم المستودع]" 
+  branch: main # تأكد من أن هذا هو اسم الفرع الرئيسي لديك (قد يكون master)
+
+local_backend: true 
+publish_mode: editorial_workflow 
+
+media_folder: "images/accounts_uploads"  # مسار حفظ صور الحسابات الجديدة
+public_folder: "/images/accounts_uploads" # المسار العام للوصول للصور
+
+# -----------------
+# إعداد الحقول لإدارة الحسابات للبيع
+# -----------------
+collections:
+  - name: "accounts_for_sale" 
+    label: "إدارة الحسابات للبيع"
+    # هذا المجلد سيحتوي على ملفات Markdown (الحسابات)
+    folder: "_data/accounts" 
+    create: true 
+    slug: "{{slug}}" # اسم الملف سيكون من عنوان الحساب
+    extension: "json" # سنستخدم ملفات JSON لسهولة القراءة بـ JavaScript
+    fields: 
+      - {label: "اسم الحساب", name: "title", widget: "string", required: true}
+      - {label: "وصف موجز", name: "description", widget: "text"}
+      - {label: "السعر", name: "price", widget: "number", valueType: "float", required: true}
+      - {label: "صورة المنتج", name: "image", widget: "image", required: true}
+      - {label: "رسالة واتساب (بداية الرسالة)", name: "whatsapp_msg", widget: "string", required: true}
