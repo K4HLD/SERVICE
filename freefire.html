@@ -32,18 +32,31 @@
             margin: 20px auto 15px auto;
         }
 
-        .btn-primary {
-            background-color: var(--buy-button-color); /* استخدام لون زر الواتساب كما كان في الأصل */
+        /* تم تحديث هذا النمط ليتناسب مع زر الشراء الوحيد المتبقي (الواتساب) */
+        .btn-action.btn-whatsapp {
+            background-color: var(--buy-button-color); /* استخدام لون زر الواتساب */
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
             width: 100%;
             margin-top: auto;
+            text-align: center;
+            display: block; /* لجعل الرابط يملأ عرض الأب */
+            text-decoration: none; /* إزالة خطوط الروابط */
+            transition: background-color 0.3s;
         }
-        .btn-primary:hover {
+
+        .btn-action.btn-whatsapp:hover {
             background-color: #45a049;
         }
 
+        /* إخفاء مجموعة الأزرار وإظهار زر الواتساب فقط لملء العرض */
+        .card-buttons-group {
+            display: flex; /* حافظنا عليها، لكن بما أن هناك زر واحد فقط سيظهر */
+            flex-direction: column;
+            gap: 10px;
+        }
+        
         /* تنسيق شبكة البطاقات (لضمان التناسق مع style.css) */
         .cards-grid {
             display: grid;
@@ -82,17 +95,11 @@
                     <h3>220 جوهرة (Diamonds)</h3>
                     <p class="price">السعر 25 درهم (DH)</p>
                      <div class="card-buttons-group">
-        <a href="https://paypal.me/khalidmdk/2,5USD" 
-           class="btn-action btn-credit" 
-           target="_blank">
-           <i class="fas fa-credit-card"></i> الدفع عن طريق بايبال
-        </a>
-        
-        <a href="https://wa.me/212770306095" 
+        <a href="#" 
            class="btn-action btn-whatsapp purchase-btn-js" 
            data-item-name="Free Fire - 220 جوهرة" 
            data-item-price="25">
-           <i class="fab fa-whatsapp"></i> الشراء عبر واتساب
+           <i class="fab fa-whatsapp"></i> أطلب الآن
         </a>
     </div>
 </div> 
@@ -103,17 +110,11 @@
                     <h3>580 جوهرة (Diamonds)</h3>
                     <p class="price">السعر: 60 درهم (DH)</p>
                      <div class="card-buttons-group">
-        <a href="https://paypal.me/khalidmdk/6USD" 
-           class="btn-action btn-credit" 
-           target="_blank">
-           <i class="fas fa-credit-card"></i> الدفع عن طريق بايبال
-        </a>
-        
-        <a href="https://wa.me/212770306095" 
+        <a href="#" 
            class="btn-action btn-whatsapp purchase-btn-js" 
            data-item-name="Free Fire - 580 جوهرة" 
            data-item-price="60">
-           <i class="fab fa-whatsapp"></i> الشراء عبر واتساب
+           <i class="fab fa-whatsapp"></i> أطلب الآن
         </a>
     </div>
 </div>
@@ -123,17 +124,11 @@
                     <h3>1188 جوهرة (Diamonds)</h3>
                     <p class="price">السعر: 110 درهم (DH)</p>
                       <div class="card-buttons-group">
-        <a href="https://paypal.me/khalidmdk/11USD" 
-           class="btn-action btn-credit" 
-           target="_blank">
-           <i class="fas fa-credit-card"></i> الدفع عن طريق بايبال
-        </a>
-        
-        <a href="https://wa.me/212770306095" 
+        <a href="#" 
            class="btn-action btn-whatsapp purchase-btn-js" 
            data-item-name="Free Fire - 1188 جوهرة" 
            data-item-price="110">
-           <i class="fab fa-whatsapp"></i> الشراء عبر واتساب
+           <i class="fab fa-whatsapp"></i> أطلب الآن
         </a>
     </div>
 </div>
@@ -143,17 +138,11 @@
                     <h3>2420 جوهرة (Diamonds)</h3>
                     <p class="price">السعر: 240 درهم (DH)</p>
                     <div class="card-buttons-group">
-        <a href="https://paypal.me/khalidmdk/24USD" 
-           class="btn-action btn-credit" 
-           target="_blank">
-           <i class="fas fa-credit-card"></i> الدفع عن طريق بايبال
-        </a>
-        
-        <a href="https://wa.me/212770306095" 
+        <a href="#" 
            class="btn-action btn-whatsapp purchase-btn-js" 
            data-item-name="Free Fire - 2420 جوهرة" 
            data-item-price="240">
-           <i class="fab fa-whatsapp"></i> الشراء عبر واتساب
+           <i class="fab fa-whatsapp"></i> أطلب الآن
         </a>
     </div>
 </div>
@@ -163,17 +152,11 @@
                     <h3>4200 جوهرة (Diamonds)</h3>
                     <p class="price">السعر: 450 درهم (DH)</p>
                     <div class="card-buttons-group">
-        <a href="https://paypal.me/khalidmdk/45USD" 
-           class="btn-action btn-credit" 
-           target="_blank">
-           <i class="fas fa-credit-card"></i> الدفع عن طريق بايبال
-        </a>
-        
-        <a href="https://wa.me/212770306095" 
+        <a href="#" 
            class="btn-action btn-whatsapp purchase-btn-js" 
            data-item-name="Free Fire - 4200 جوهرة" 
            data-item-price="450">
-           <i class="fab fa-whatsapp"></i> الشراء عبر واتساب
+           <i class="fab fa-whatsapp"></i> أطلب الآن
         </a>
     </div>
 </div>
@@ -183,17 +166,11 @@
                     <h3>6200 جوهرة (Diamonds)</h3>
                     <p class="price">السعر: 560 درهم (DH)</p>
                     <div class="card-buttons-group">
-        <a href="https://paypal.me/khalidmdk/56USD" 
-           class="btn-action btn-credit" 
-           target="_blank">
-           <i class="fas fa-credit-card"></i> الدفع عن طريق بايبال
-        </a>
-        
-        <a href="https://wa.me/212770306095" 
+        <a href="#" 
            class="btn-action btn-whatsapp purchase-btn-js" 
            data-item-name="Free Fire - 6200 جوهرة" 
            data-item-price="560">
-           <i class="fab fa-whatsapp"></i> الشراء عبر واتساب
+           <i class="fab fa-whatsapp"></i> أطلب الآن
         </a>
     </div>
 </div>
@@ -210,17 +187,11 @@
     <p class="price">السعر: 900 درهم (DH)</p>
     
     <div class="card-buttons-group">
-        <a href="https://paypal.me/khalidmdk/90USD" 
-           class="btn-action btn-credit" 
-           target="_blank">
-           <i class="fas fa-credit-card"></i> الدفع عن طريق بايبال
-        </a>
-        
-        <a href="https://wa.me/212770306095" 
+        <a href="#" 
            class="btn-action btn-whatsapp purchase-btn-js" 
            data-item-name="Free Fire - 10000 جوهرة" 
            data-item-price="900">
-           <i class="fab fa-whatsapp"></i> الشراء عبر واتساب
+           <i class="fab fa-whatsapp"></i> أطلب الآن
         </a>
     </div>
 </div>
@@ -231,17 +202,11 @@
                     <h3>عضوية أسبوعية (Weekly Membership)</h3>
                     <p class="price">السعر: 25 درهم (DH)</p>
                     <div class="card-buttons-group">
-        <a href="https://paypal.me/khalidmdk/2,5USD" 
-           class="btn-action btn-credit" 
-           target="_blank">
-           <i class="fas fa-credit-card"></i> الدفع عن طريق بايبال
-        </a>
-        
-        <a href="https://wa.me/212770306095" 
+        <a href="#" 
            class="btn-action btn-whatsapp purchase-btn-js" 
            data-item-name="العضوية الاسبوعية"
            data-item-price="25">
-           <i class="fab fa-whatsapp"></i> الشراء عبر واتساب
+           <i class="fab fa-whatsapp"></i> أطلب الآن
         </a>
     </div>
 </div>
@@ -251,17 +216,11 @@
                     <h3>عضوية الشهرية (monthly Membership)</h3>
                     <p class="price">السعر: 110 درهم (DH)</p>
                     <div class="card-buttons-group">
-        <a href="https://paypal.me/khalidmdk/11USD" 
-           class="btn-action btn-credit" 
-           target="_blank">
-           <i class="fas fa-credit-card"></i> الدفع عن طريق بايبال
-        </a>
-        
-        <a href="https://wa.me/212770306095" 
+        <a href="#" 
            class="btn-action btn-whatsapp purchase-btn-js" 
            data-item-name="العضوية الشهرية"
            data-item-price="110">
-           <i class="fab fa-whatsapp"></i> الشراء عبر واتساب
+           <i class="fab fa-whatsapp"></i> أطلب الآن 
         </a>
     </div>
 </div>
@@ -292,11 +251,15 @@
             }
 
             // 2. منطق طلب الواتساب (باستخدام بيانات data-item-name/price)
-            const buyButtons = document.querySelectorAll('.purchase-btn'); 
+            // *تعديل مُحدد العناصر من 'purchase-btn' إلى 'purchase-btn-js'*
+            const buyButtons = document.querySelectorAll('.purchase-btn-js'); 
             const whatsappNumber = '212770306095';
 
             buyButtons.forEach(button => {
+                // *تم تغيير حدث الـ click ليتم تشغيل المنطق الخاص بك بالكامل*
                 button.addEventListener('click', (event) => {
+                    
+                    event.preventDefault(); // منع الانتقال الافتراضي للرابط (#)
                     
                     const productName = button.getAttribute('data-item-name');
                     const productPrice = button.getAttribute('data-item-price');
