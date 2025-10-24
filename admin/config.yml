@@ -2,9 +2,12 @@ backend:
   name: github
   repo: "k4hld/SERVICE"
   branch: main
-  site_url: "https://www.k4hld.store"
-  auth_scope: "repo"
-  open_authoring: true 
+  # ----------------------------------------------------------------
+  # الإعدادات المعدلة للمصادقة على Vercel (OAuth Proxy):
+  # يجب استبدال الرابط أدناه بالرابط الحقيقي لخادم المصادقة الوسيط الذي قمت بنشره على Vercel.
+  base_url: 'https://k4hld-auth.vercel.app'
+  auth_endpoint: 'auth'
+  # ----------------------------------------------------------------
 
 publish_mode: editorial_workflow 
 
