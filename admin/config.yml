@@ -16,13 +16,18 @@ public_folder: "/images/accounts_uploads"
 collections:
   - name: "accounts_for_sale" 
     label: "إدارة الحسابات للبيع"
-    folder: "_data/accounts" 
-    create: true 
-    slug: "{{slug}}"
-    extension: "json" 
-    fields: 
-      - {label: "اسم الحساب", name: "title", widget: "string", required: true}
-      - {label: "وصف موجز", name: "description", widget: "text"}
-      - {label: "السعر", name: "price", widget: "number", valueType: "float", required: true}
-      - {label: "صورة المنتج", name: "image", widget: "image", required: true}
-      - {label: "رسالة واتساب  (بداية الرسالة)", name: "whatsapp_msg", widget: "string", required: true}
+    # تغيير طريقة الحفظ من مجلد لملف واحد
+    files: 
+      - name: "all_accounts" 
+        label: "جميع الحسابات"
+        file: "_data/accounts.json" # سيتم حفظ كل الحسابات هنا الآن
+        fields:
+          - label: "قائمة الحسابات"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "اسم الحساب", name: "title", widget: "string", required: true}
+              - {label: "وصف موجز", name: "description", widget: "text"}
+              - {label: "السعر", name: "price", widget: "number", valueType: "float", required: true}
+              - {label: "صورة المنتج", name: "image", widget: "image", required: true}
+              - {label: "رسالة واتساب (بداية الرسالة)", name: "whatsapp_msg", widget: "string", required: true}
