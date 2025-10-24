@@ -3,9 +3,8 @@ backend:
   repo: "k4hld/SERVICE"
   branch: main
   # ----------------------------------------------------------------
-  # الإعدادات المعدلة للمصادقة على Vercel (OAuth Proxy):
-  # يجب استبدال الرابط أدناه بالرابط الحقيقي لخادم المصادقة الوسيط الذي قمت بنشره على Vercel.
-  base_url: 'https://k4hld-auth.vercel.app'
+  # 
+  base_url: 'https://decap-cms-oauth-eight.vercel.app'
   auth_endpoint: 'auth'
   # ----------------------------------------------------------------
 
