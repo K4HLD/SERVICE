@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('accounts-container');
-    const whatsappBase = 'https://wa.me/212770306095'; // ضع رقم الواتساب الخاص بك هنا
+    const whatsappBase = 'https://wa.me/212770306095?text='; // ضع رقم الواتساب الخاص بك هنا
 
     // 1. جلب ملف JSON الذي يحتوي على كل الحسابات
     fetch('_data/accounts.json')
