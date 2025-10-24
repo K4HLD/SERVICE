@@ -33,9 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             <h3 class="card-title">${account.title}</h3>
                             <p class="card-description">${account.description}</p>
                             <div class="card-footer">
-                                <span class="card-price">${account.price} ريال</span>
+                                <span class="card-price">${account.price} درهم (DH)</span>
                                 <a href="${whatsappLink}" target="_blank" class="buy-btn">
-                                    <i class="fab fa-whatsapp"></i> شراء
+                                    <i class="fab fa-whatsapp"></i> شراء الآن
                                 </a>
                             </div>
                         </div>
