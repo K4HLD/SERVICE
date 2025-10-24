@@ -327,3 +327,90 @@ a {
         font-size: 24px;
     }
 }
+/* ==================================== */
+/* 1. تنسيق الشبكة الحاوية للبطاقات */
+/* ==================================== */
+.cards-grid {
+    display: grid;
+    /* عرض 3 أعمدة على الشاشات الكبيرة، وعمود واحد على الشاشات الصغيرة */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* المسافة بين البطاقات */
+    padding: 20px 0;
+}
+
+/* ==================================== */
+/* 2. تنسيق البطاقة الواحدة (Card) */
+/* ==================================== */
+.card {
+    background: #222; /* خلفية البطاقة (غامقة) */
+    border-radius: 12px;
+    overflow: hidden; /* لإخفاء حواف الصورة */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* رفع البطاقة قليلاً عند المرور عليها */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* ==================================== */
+/* 3. تنسيق الصورة داخل البطاقة */
+/* ==================================== */
+.card-image {
+    width: 100%;
+    height: 200px; /* ارتفاع ثابت للصورة */
+    object-fit: cover; /* لضمان ملء الصورة دون تشوه */
+    border-bottom: 1px solid #444;
+}
+
+/* ==================================== */
+/* 4. محتوى وتذييل البطاقة */
+/* ==================================== */
+.card-content {
+    padding: 15px;
+    flex-grow: 1; /* للسماح للمحتوى بالنمو ودفش التذييل للأسفل */
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.card-description {
+    font-size: 0.95rem;
+    color: #bbb;
+    margin-bottom: 15px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between; /* توزيع العناصر على الأطراف */
+    align-items: center;
+    padding: 15px;
+    border-top: 1px solid #444;
+    background: #2a2a2a;
+}
+
+.card-price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #00ffc8; /* لون مميز للسعر */
+}
+
+.buy-btn {
+    background: #00ffc8;
+    color: #111;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+.buy-btn:hover {
+    background: #00e0b3;
+}
