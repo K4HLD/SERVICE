@@ -20,6 +20,13 @@
       "price": 1500,
       "image": "https://i.ytimg.com/vi/1e0vdxYkaes/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBP_lEQxjDZ6J_yNDzgXXe7WSEa4g",
       "whatsapp_msg": "مرحبا! انا مهتم بهذا الحساب "
+    },
+    {
+      "title": "ACCOUNT FF TEST 2",
+      "description": "description test 2",
+      "price": 2000000,
+      "image": "https://i.ytimg.com/vi/1e0vdxYkaes/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBP_lEQxjDZ6J_yNDzgXXe7WSEa4g",
+      "whatsapp_msg": "test"
     }
   ]
 }
