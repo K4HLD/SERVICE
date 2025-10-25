@@ -1,18 +1,18 @@
 {
   "items": [
     {
-      "title": "test account",
-      "description": "test",
+      "title": "ACCOUNT PES TEST 1",
+      "description": "description test 1",
       "price": 1000,
-      "whatsapp_msg": "hi test",
+      "whatsapp_msg": "test",
       "image": "https://store-images.s-microsoft.com/image/apps.172.14422652290628995.fd287f0c-f737-4084-ae1c-7d3738acfe04.2b58f52c-5313-4a0f-a8fa-4a65752fb9e6?q=90&w=480&h=270"
     },
     {
-      "title": "account test 2",
-      "description": "test",
-      "price": 500,
+      "title": "ACCOUNT PES TEST 2",
+      "description": "description test",
+      "price": 50000,
       "image": "https://store-images.s-microsoft.com/image/apps.172.14422652290628995.fd287f0c-f737-4084-ae1c-7d3738acfe04.2b58f52c-5313-4a0f-a8fa-4a65752fb9e6?q=90&w=480&h=270",
-      "whatsapp_msg": "hi"
+      "whatsapp_msg": "test"
     },
     {
       "title": "ACCOUNT FF TEST",
